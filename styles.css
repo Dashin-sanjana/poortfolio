@@ -144,6 +144,28 @@ h2 {
 }
 
 /* Experience Section - Updated */
+.certificate-list {
+    list-style: none; /* Removes bullet points */
+    padding: 0;
+    text-align: left;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: auto;
+}
+
+.certificate-list li {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.certificate-list li:last-child {
+    border-bottom: none;
+}
+
+
+/* Experience Section - Updated */
 .experience-list {
     list-style: none; /* Removes bullet points */
     padding: 0;
@@ -211,6 +233,9 @@ footer {
     gap: 20px;
     text-align: center;
     padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .contact-item {
@@ -218,6 +243,9 @@ footer {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    flex: 1;
+    min-width: 200px; /* Adjust as needed */
+    max-width: 300px;
     text-align: center;
 }
 
@@ -238,6 +266,9 @@ footer {
     font-weight: 600;
     font-size: 18px;
     text-decoration: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    display: inline-block;
 }
 
 .contact-item a:hover {
