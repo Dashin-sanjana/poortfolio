@@ -289,3 +289,76 @@ footer {
 .download-btn:hover {
     background-color: #444;
 }
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .hero button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .profile-pic {
+        width: 180px;
+        height: 180px;
+    }
+
+    .section {
+        padding: 30px 20px;
+        width: 95%;
+    }
+
+    .skills-list,
+    .experience-list,
+    .certificate-list {
+        text-align: center;
+    }
+
+    .project-card {
+        width: 90%;
+    }
+
+    .contact-grid {
+        flex-direction: column;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    .profile-pic {
+        width: 140px;
+        height: 140px;
+    }
+
+    .project-card img {
+        height: 150px;
+    }
+
+    footer {
+        font-size: 16px;
+        padding: 20px;
+    }
+}
