@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dashin Sanjana - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
     <nav>
+        <div class="logo">Dashin Sanjana</div>
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -15,30 +17,32 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#contact">Contact</a></li>
-
         </ul>
     </nav>
 
-    <div class="hero">
+    <header class="hero">
         <div class="hero-content">
-            <img src="Untitled design-12.png" alt="Dashin Sanjana" class="profile-pic">
+            <img src="Untitled design-12.png" alt="Dashin Sanjana" class="profile-pic" />
             <h1>Dashin Sanjana</h1>
             <p>Software Engineering Undergraduate | Full-Stack Developer | UI/UX Designer</p>
-            <a href="Dashin sanjana updated cv.pdf" download class="download-btn">Download CV</a>
-
-            <button onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View My Work</button>
+            <div class="hero-buttons">
+                <button onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                    View My Work
+                </button>
+                <a href="Dashin sanjana updated cv.pdf" download class="download-btn">Download CV</a>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <div class="container">
+    <main class="container">
         <section id="about" class="section">
             <h2>About Me</h2>
             <p>I am a dedicated Software Engineering undergraduate passionate about
-                building innovative, user-friendly applications. With experience in full-stack
-                development, UI/UX design, and project management, I thrive on solving
-                complex problems. I’m eager to gain professional experience, enhance my
-                skills, and contribute to impactful software solutions in a collaborative
-                environment.</p>
+               building innovative, user-friendly applications. With experience in full-stack
+               development, UI/UX design, and project management, I thrive on solving
+               complex problems. I’m eager to gain professional experience, enhance my
+               skills, and contribute to impactful software solutions in a collaborative
+               environment.</p>
         </section>
 
         <section id="skills" class="section">
@@ -75,49 +79,31 @@
             <h2>Projects</h2>
             <div class="project-grid">
                 <div class="project-card">
-                    <img src="expense tracker.png" alt="Expense Tracker">
-                    <h3>Personal Expense Tracker Web App</h3>
-                    <p>Developed a responsive full-stack web app for managing income and expenses. 
-                       Integrated Chart.js for dynamic visualizations, implemented secure user authentication, 
-                       and designed a clean, intuitive dashboard for enhanced user experience.</p>
-                    <p><a href="http://github.com/Dashin-sanjana/expense-tracker" target="_blank">🔗 GitHub</a></p>
-                </div>
-                <div class="project-card">
-                    <img src="icon copy.png" alt="Fably Project">
+                    <img src="clothes_11605848-removebg-preview.png" alt="Fably Project" />
                     <h3>Fably (Fashion App)</h3>
                     <p>An AI-powered fashion app that generates outfit visualizations,
-                        offers personalized styling, wardrobe management, couple dress matching,
-                        and shopping integration, providing users with smart outfit recommendations
-                        and seamless fashion exploration.</p>
-                        <p><a href="http://github.com/fablypro/Fably" target="_blank">🔗 GitHub</a></p>
+                       offers personalized styling, wardrobe management, couple dress matching,
+                       and shopping integration.</p>
                 </div>
                 <div class="project-card">
-                    <img src="airline_12315171-removebg-preview.png" alt="Plane Management System">
+                    <img src="airline_12315171-removebg-preview.png" alt="Plane Management System" />
                     <h3>Plane Management System</h3>
-                    <p>Developed a system to manage and monitor different aspects of airline operations,
-                        including flight timetables, crew rostering, and aircraft maintenance.</p>
-                    <p><a href="http://github.com/Dashin-sanjana/Plane-ticket-management" target="_blank">🔗 GitHub</a></p>
-               
+                    <p>Developed a system to manage flight timetables, crew rostering, and aircraft maintenance.</p>
                 </div>
                 <div class="project-card">
-                    <img src="achievement_11300864-removebg-preview.png" alt="Exam Grade System">
+                    <img src="achievement_11300864-removebg-preview.png" alt="Exam Grade System" />
                     <h3>Student Exam Grade System</h3>
-                    <p>Created a platform to streamline student grade management, ensuring secure 
-                        and efficient data handling for educational institutions.</p>
-                    <p><a href="http://github.com/Dashin-sanjana/Ticketing-System" target="_blank">🔗 GitHub</a></p>
-               
+                    <p>Created a platform to manage student grades securely and efficiently for educational institutions.</p>
                 </div>
                 <div class="project-card">
-                    <img src="tide_3408448-removebg-preview.png" alt="Website for 'Life Below Water'">
+                    <img src="tide_3408448-removebg-preview.png" alt="Website for 'Life Below Water'" />
                     <h3>Website for "Life Below Water"</h3>
-                    <p>Designed an educational website to raise awareness about marine conservation, 
-                        supporting UN Sustainable Development Goal 14.</p>
+                    <p>Designed a site to raise awareness about marine conservation, supporting UN SDG 14.</p>
                 </div>
                 <div class="project-card">
-                    <img src="website_14654068-removebg-preview.png" alt="UI/UX Designs">
+                    <img src="website_14654068-removebg-preview.png" alt="UI/UX Designs" />
                     <h3>UI/UX Designs</h3>
-                    <p>Developed user-friendly interfaces for various web and mobile applications, 
-                        focusing on usability and aesthetic appeal.</p>
+                    <p>Developed user-friendly interfaces for various web and mobile applications.</p>
                 </div>
             </div>
         </section>
@@ -125,13 +111,10 @@
         <section id="certification" class="section">
             <h2>Certifications</h2>
             <ul class="certificate-list">
-                <li><strong>AlgoXplore 1.0 Hackathon</strong> - NSBM Green University. Team "The Sentinels". Participated in algorithmic and CTF challenges, enhancing technical problem-solving skills in a fast-paced setting.</li>
-                <li><strong>Haxpedition Mini Hackathon 2024</strong> - Organized by IEEE Student Branch of IIT. Collaborated in a high-energy environment gaining practical experience in innovation and development.</li>
-                <li><strong>Quora 2023 – Quiz Competition</strong> - Statistics Society, University of Sri Jayewardenepura. Recognized for outstanding performance in analytics and decision-making under pressure.</li>
-                <li><strong>Learning SQL Programming</strong> - National Association of State Boards of Accountancy (NASBA).</li>
+                <li><strong>Learning SQL Programming</strong> - NASBA.</li>
                 <li><strong>Web Development Certificate</strong> - University of Moratuwa.</li>
                 <li><strong>Python Programming Certificate</strong> - University of Moratuwa.</li>
-                <li><strong>Social Media Marketing Certificate</strong> - Mastered strategies for engaging social media campaigns.</li>
+                <li><strong>Social Media Marketing Certificate</strong> - Campaign strategy.</li>
                 <li><strong>English Language Certificate</strong> - Cambridge School.</li>
             </ul>
         </section>
@@ -139,9 +122,9 @@
         <section id="experience" class="section">
             <h2>Experience</h2>
             <ul class="experience-list">
-                <li><strong>UI/UX Designer</strong> - Designed user-friendly interfaces for web and mobile applications.</li>
-                <li><strong>Freelance Video Editor (2022 - Present)</strong> - Created promotional videos using Adobe Premiere Pro.</li>
-                <li><strong>Online Mathematics Tutor (2023 - Present)</strong> - Conducted tutoring sessions in algebra, calculus, and geometry.</li>
+                <li><strong>UI/UX Designer</strong> - Designed user-friendly interfaces for web/mobile apps.</li>
+                <li><strong>Freelance Video Editor (2022 - Present)</strong> - Created promotional videos using Premiere Pro.</li>
+                <li><strong>Online Mathematics Tutor (2023 - Present)</strong> - Tutored students in algebra, calculus, geometry.</li>
             </ul>
         </section>
 
@@ -149,20 +132,20 @@
             <h2>Contact</h2>
             <div class="contact-grid">
                 <div class="contact-item">
-                    <img src="mail_18221852-removebg-preview.png" alt="Email">
+                    <img src="mail_18221852-removebg-preview.png" alt="Email" />
                     <p>Email: <a href="mailto:dashinsanjana@gmail.com">dashinsanjana@gmail.com</a></p>
                 </div>
                 <div class="contact-item">
-                    <img src="telephone_17580767-removebg-preview.png" alt="Phone">
+                    <img src="telephone_17580767-removebg-preview.png" alt="Phone" />
                     <p>Phone: +94 763568325</p>
                 </div>
                 <div class="contact-item">
-                    <img src="linkedin_3536505-removebg-preview.png" alt="LinkedIn">
+                    <img src="linkedin_3536505-removebg-preview.png" alt="LinkedIn" />
                     <p><a href="https://www.linkedin.com/in/dashin-sanjana-kaluarachchi">LinkedIn Profile</a></p>
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
     <footer>
         <p>&copy; 2025 Dashin Sanjana | All Rights Reserved</p>
