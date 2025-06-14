@@ -12,15 +12,17 @@
 <body>
     <nav>
         <div class="logo">Dashin Sanjana</div>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-    </nav>
+      </nav>
+      
 
     <header class="hero">
         <div class="hero-content">
@@ -104,7 +106,7 @@
           
             <div class="skills-container">
               <div class="skill-group card">
-                <h3>Programming Languages</h3>
+                <h3>👩‍💻 Programming Languages</h3>
                 <div class="skill-badges">
                   <span data-tooltip="Experienced in OOP and backend"><i class="devicon-java-plain"></i> Java</span>
                   <span data-tooltip="Data Science & Scripting"><i class="devicon-python-plain"></i> Python</span>
@@ -116,7 +118,7 @@
               </div>
           
               <div class="skill-group card">
-                <h3>Web Development</h3>
+                <h3>🌐 Web Development</h3>
                 <div class="skill-badges">
                   <span data-tooltip="Web page structure"><i class="devicon-html5-plain"></i> HTML</span>
                   <span data-tooltip="Styling and Layouts"><i class="devicon-css3-plain"></i> CSS</span>
@@ -129,7 +131,7 @@
               </div>
           
               <div class="skill-group card">
-                <h3>Mobile App Development</h3>
+                <h3>📱 Mobile App Development</h3>
                 <div class="skill-badges">
                   <span data-tooltip="Cross-platform UI toolkit"><i class="devicon-flutter-plain"></i> Flutter</span>
                   <span data-tooltip="Native Android Dev"><i class="devicon-android-plain"></i> Android</span>
@@ -138,7 +140,7 @@
               </div>
           
               <div class="skill-group card">
-                <h3>Backend & Databases</h3>
+                <h3>☁️ Backend & Databases</h3>
                 <div class="skill-badges">
                   <span data-tooltip="Python Microframework"><i class="devicon-flask-original"></i> Flask</span>
                   <span data-tooltip="Realtime & NoSQL"><i class="devicon-firebase-plain"></i> Firebase</span>
@@ -150,7 +152,7 @@
               </div>
           
               <div class="skill-group card">
-                <h3>AI/ML & CV</h3>
+                <h3>🧠 AI/ML & CV</h3>
                 <div class="skill-badges">
                   <span data-tooltip="Computer vision library"><i class="devicon-opencv-plain"></i> OpenCV</span>
                   <span data-tooltip="Deep learning framework"><i class="devicon-tensorflow-original"></i> TensorFlow</span>
@@ -162,7 +164,7 @@
               </div>
           
               <div class="skill-group card">
-                <h3>Tools & Platforms</h3>
+                <h3>🔧 Tools & Platforms</h3>
                 <div class="skill-badges">
                   <span data-tooltip="Version control"><i class="devicon-git-plain"></i> Git</span>
                   <span data-tooltip="Remote repositories"><i class="devicon-github-original"></i> GitHub</span>
@@ -175,7 +177,7 @@
               </div>
           
               <div class="skill-group card">
-                <h3>Other Skills</h3>
+                <h3>🛠️ Other Skills</h3>
                 <div class="skill-badges">
                   <span data-tooltip="Algorithmic thinking">🧩 Problem Solving</span>
                   <span data-tooltip="User experience focus">🎨 UI/UX Design</span>
@@ -265,20 +267,23 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-          const observer = new IntersectionObserver(entries => {
+          const observerOptions = {
+            threshold: 0.1
+          };
+      
+          const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
+                const animationClass = entry.target.dataset.animate || 'animate';
+                entry.target.classList.add(animationClass);
+                obs.unobserve(entry.target);
               }
             });
-          }, {
-            threshold: 0.1
-          });
-    
-          document.querySelectorAll('.section, .project-card, .edu-box, .tech-skill').forEach(el => {
-            observer.observe(el);
-          });
+          }, observerOptions);
+      
+          const targets = document.querySelectorAll('.section, .project-card, .edu-box, .tech-skill');
+          
+          targets.forEach(el => observer.observe(el));
         });
       </script>
 </body>
