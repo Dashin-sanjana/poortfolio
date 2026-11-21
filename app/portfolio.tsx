@@ -449,9 +449,16 @@ export default function Portfolio() {
             <div className="hero-footnote"><span>01 / 04</span><span>Swift · SwiftUI · SwiftData</span></div>
           </div>
           <figure className="hero-portrait">
-            <div className="portrait-frame"><img src="/assets/dashin-sanjana-original.jpg" alt="Dashin Sanjana, in the original photograph he provided" fetchPriority="high" /></div>
+            <div className="portrait-stage">
+              <span className="avatar-halo" aria-hidden="true" />
+              <img className="cartoon-avatar" src="/assets/dashin-sanjana-cartoon-avatar.png" alt="Stylized 3D cartoon illustration of Dashin" fetchPriority="high" />
+              <div className="portrait-frame">
+                <img src="/assets/dashin-sanjana-original.jpg" alt="Dashin Sanjana in his original, unedited photograph" />
+                <span className="photo-original-label">Original photo</span>
+              </div>
+              <span className="portrait-index">DS / 2026</span>
+            </div>
             <figcaption><span>Dashin Sanjana</span><span>Software Engineer <i>↗</i></span></figcaption>
-            <span className="portrait-index">DS / 2026</span>
           </figure>
           <a href="#work" className="scroll-cue" aria-label="Scroll to selected work"><ArrowDown size={16} /><span>Scroll to explore</span></a>
         </section>
