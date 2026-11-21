@@ -176,18 +176,66 @@ const storyScenes = [
   { id: "finish", number: "03", title: "Share what I made", detail: "When the work is ready, I bring it together, share the result, and enjoy that final little win.", label: "PROJECT COMPLETE" },
 ];
 
+function ScrollBackdrop() {
+  const currentFrameRef = useRef<HTMLDivElement>(null);
+  const nextFrameRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const currentFrame = currentFrameRef.current;
+    const nextFrame = nextFrameRef.current;
+    if (!currentFrame || !nextFrame) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+    const positions = Array.from({ length: 8 }, (_, index) => `${((index % 4) / 3) * 100}% ${Math.floor(index / 4) * 100}%`);
+    const updateFrame = (progress: number) => {
+      const frameProgress = Math.min(7, Math.max(0, progress * 7));
+      const frameIndex = Math.floor(frameProgress);
+      const nextIndex = Math.min(frameIndex + 1, 7);
+      currentFrame.style.backgroundPosition = positions[frameIndex];
+      nextFrame.style.backgroundPosition = positions[nextIndex];
+      nextFrame.style.opacity = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "0" : String(frameProgress - frameIndex);
+    };
+
+    const context = gsap.context(() => {
+      updateFrame(0);
+      ScrollTrigger.create({
+        trigger: document.documentElement,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.45,
+        invalidateOnRefresh: true,
+        onUpdate: (trigger) => updateFrame(trigger.progress),
+        onRefresh: (trigger) => updateFrame(trigger.progress),
+      });
+    });
+    const refresh = window.requestAnimationFrame(() => ScrollTrigger.refresh());
+    return () => {
+      window.cancelAnimationFrame(refresh);
+      context.revert();
+    };
+  }, []);
+
+  return (
+    <div className="portfolio-scroll-backdrop" aria-hidden="true">
+      <div className="portfolio-backdrop-frame">
+        <div className="portfolio-backdrop-panel" ref={currentFrameRef} />
+        <div className="portfolio-backdrop-panel portfolio-backdrop-next" ref={nextFrameRef} />
+      </div>
+    </div>
+  );
+}
+
 function ScrollStory() {
   const [activeScene, setActiveScene] = useState(0);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const context = gsap.context(() => {
-      const chapters = gsap.utils.toArray<HTMLElement>(".story-chapter");
-      chapters.forEach((chapter, index) => {
+      gsap.utils.toArray<HTMLElement>(".story-chapter").forEach((chapter, index) => {
         ScrollTrigger.create({
           trigger: chapter,
-          start: "top 62%",
-          end: "bottom 38%",
+          start: "top 65%",
+          end: "bottom 35%",
           onEnter: () => setActiveScene(index),
           onEnterBack: () => setActiveScene(index),
         });
@@ -196,36 +244,20 @@ function ScrollStory() {
     return () => context.revert();
   }, []);
 
-  const sceneIndex = Math.min(activeScene, storyScenes.length - 1);
-  const scene = storyScenes[sceneIndex];
-
   return (
     <section className="story-section" aria-labelledby="story-title">
       <div className="story-heading">
         <p className="section-kicker"><span>01</span><span>A little about how I work</span></p>
         <h2 id="story-title">Scroll through<br /><em>my process.</em></h2>
       </div>
-      <div className="story-layout">
-        <div className="story-stage-wrap">
-          <div className="story-stage" data-scene={scene.id} aria-live="polite">
-            <div className="story-stage-top"><span>DASHIN / WORKFLOW</span><span>{scene.number} — 03</span></div>
-            <div className="story-glow" aria-hidden="true" />
-            <div className="story-sprite-frame" aria-label={`Scene ${scene.number}: ${scene.title}`}>
-              <img className="story-sprite-strip" src="/assets/dashin-workflow-story-sprite.png" alt="Three illustrated moments: standing beside the desk, coding at a laptop, and smiling after completing the project" style={{ transform: `translate3d(-${(sceneIndex / storyScenes.length) * 100}%, 0, 0)` }} />
-            </div>
-            <p className="story-stage-detail">{scene.detail}</p>
-            <div className="story-stage-caption"><span>{scene.title}</span><span>SCROLL TO FOLLOW <b>↓</b></span></div>
-          </div>
-        </div>
-        <div className="story-chapters">
+      <div className="story-chapters">
           {storyScenes.map((item, index) => (
-            <article className={`story-chapter${sceneIndex === index ? " is-active" : ""}`} key={item.id} aria-current={sceneIndex === index ? "step" : undefined}>
+            <article className={`story-chapter${activeScene === index ? " is-active" : ""}`} key={item.id} aria-current={activeScene === index ? "step" : undefined}>
               <span className="story-chapter-number">{item.number} / 03</span>
               <h3>{item.title}</h3>
               <p>{item.detail}</p>
             </article>
           ))}
-        </div>
       </div>
     </section>
   );
@@ -491,6 +523,7 @@ export default function Portfolio() {
   return (
     <>
       <div className="reading-progress" aria-hidden="true" />
+      <ScrollBackdrop />
       <header className="site-header">
         <a className="wordmark" href="#top" aria-label="Dashin Sanjana, home">D<span>.</span>S</a>
         <button className="menu-toggle" type="button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>

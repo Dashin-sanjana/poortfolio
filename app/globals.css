@@ -88,10 +88,40 @@ body{background:#090909;color:#f4f2ee}
 @media(prefers-reduced-motion:reduce){.story-window{animation:none}.story-avatar,.story-chapter,.story-glow{transition:none!important}}
 
 /* The three illustrated poses are scrubbed by the active scroll chapter. */
-.story-sprite-frame{position:absolute;z-index:2;right:5%;bottom:4%;height:91%;width:auto;aspect-ratio:1/2;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#26180f;box-shadow:0 20px 60px rgba(0,0,0,.42)}
-.story-sprite-strip{display:block;width:300%;max-width:none;height:100%;object-fit:fill;transition:transform .8s cubic-bezier(.2,.75,.2,1);will-change:transform}
+.story-sprite-frame{position:absolute;z-index:2;right:5%;bottom:4%;height:91%;width:auto;aspect-ratio:3/4;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#26180f;box-shadow:0 20px 60px rgba(0,0,0,.42)}
+.story-sprite-panel{position:absolute;inset:0;background-image:url('/assets/dashin-workflow-8frame-sprite.png');background-repeat:no-repeat;background-size:400% 200%;background-position:0 0;will-change:background-position,opacity}
+.story-sprite-next{opacity:0}
 @media(max-width:620px){.story-stage-wrap{height:55svh;min-height:400px;max-height:480px}.story-stage{height:100%;min-height:400px;max-height:480px}.story-sprite-frame{right:4%;bottom:22%;height:72%;border-radius:12px}.story-stage-detail{position:absolute;z-index:4;left:15px;right:15px;bottom:43px;display:block;margin:0;color:#e4d6cb;font-size:9px;line-height:1.45;text-shadow:0 1px 8px #000}.story-chapter{min-height:100svh;padding-top:calc(55svh + 24px)}}
-@media(prefers-reduced-motion:reduce){.story-sprite-strip{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.story-sprite-next{display:none}}
+
+/* Scroll-linked character film stays behind the portfolio instead of sitting inside a card. */
+body{background:#090909;color:#f4f2ee}
+.portfolio-scroll-backdrop{position:fixed;z-index:0;inset:0;overflow:hidden;pointer-events:none;background:#090909}
+.portfolio-scroll-backdrop::before{content:"";position:absolute;z-index:2;inset:0;background:linear-gradient(90deg,rgba(9,9,9,.96) 0%,rgba(9,9,9,.78) 34%,rgba(9,9,9,.32) 68%,rgba(9,9,9,.24) 100%);pointer-events:none}
+.portfolio-scroll-backdrop::after{content:"";position:absolute;z-index:3;inset:0;opacity:.28;background-image:radial-gradient(1.5px 1.5px at 14% 18%,#fff 60%,transparent 100%),radial-gradient(1px 1px at 37% 72%,#fff 60%,transparent 100%),radial-gradient(2px 2px at 81% 24%,#fff 60%,transparent 100%),radial-gradient(1px 1px at 68% 84%,#fff 60%,transparent 100%);background-size:330px 280px,430px 370px,510px 410px,390px 330px}
+.portfolio-backdrop-frame{position:absolute;right:0;top:80px;height:calc(100svh - 80px);width:auto;max-width:82vw;aspect-ratio:3/4;overflow:hidden;opacity:.82;filter:brightness(.78) saturate(1.08);mix-blend-mode:screen;mask-image:radial-gradient(ellipse 78% 76% at 62% 50%,#000 42%,rgba(0,0,0,.92) 67%,transparent 100%)}
+.portfolio-backdrop-panel{position:absolute;inset:0;background-image:url('/assets/dashin-workflow-8frame-sprite.png');background-repeat:no-repeat;background-size:400% 200%;background-position:0 0;will-change:background-position,opacity}
+.portfolio-backdrop-next{opacity:0}
+main{position:relative;z-index:1;background:transparent}
+.site-header{z-index:50}
+.hero,.section,.story-section{background:transparent}
+.hero::before{background:linear-gradient(90deg,rgba(9,9,9,.2),rgba(9,9,9,.02) 65%,transparent),radial-gradient(ellipse at 78% 50%,rgba(255,105,40,.12),transparent 52%)}
+.skills-section{background:rgba(16,16,16,.46)}
+.contact-section{background:rgba(20,23,18,.72);backdrop-filter:blur(2px)}
+.hero .cartoon-avatar,.hero .avatar-halo{display:none}
+.hero-portrait{width:min(100%,230px);justify-self:end}
+.portrait-stage{height:350px;min-height:0;display:block}
+.hero .portrait-frame{right:0;bottom:12%;width:100%;border-radius:12px;transform:rotate(2deg);animation:none}
+.hero .portrait-index{top:0;right:-16px}
+.story-section{position:relative;z-index:1;overflow:visible;padding-bottom:clamp(64px,9vw,120px)}
+.story-heading,.story-chapters{position:relative;z-index:1}
+.story-chapters{max-width:1152px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:0}
+.story-chapter{min-height:300px;padding:24px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(12,12,12,.74);backdrop-filter:blur(12px);justify-content:flex-end;opacity:.65;transform:translateY(0)}
+.story-chapter.is-active{opacity:1;transform:translateY(-5px);border-color:rgba(255,112,43,.64);box-shadow:0 18px 46px rgba(0,0,0,.24)}
+.story-chapter h3{font-size:clamp(22px,2.8vw,34px);color:#f4f1ec}
+.story-chapter p{color:#bcb4ad;font-size:12px}
+@media(max-width:680px){.portfolio-scroll-backdrop::before{background:linear-gradient(90deg,rgba(9,9,9,.87),rgba(9,9,9,.5) 57%,rgba(9,9,9,.22))}.portfolio-backdrop-frame{height:64svh;max-width:none;right:-18vw;top:13svh;opacity:.58;mask-image:radial-gradient(ellipse 78% 78% at 64% 48%,#000 40%,rgba(0,0,0,.9) 68%,transparent 100%)}.hero-portrait{width:min(56vw,220px);justify-self:end}.portrait-stage{height:330px}.hero .portrait-frame{bottom:12%;width:100%}.story-section{padding-top:68px}.story-heading{margin-bottom:28px}.story-chapters{grid-template-columns:1fr;gap:10px}.story-chapter{min-height:210px;padding:20px}.story-chapter h3{font-size:28px}}
+@media(prefers-reduced-motion:reduce){.portfolio-backdrop-next{display:none}}
 
 /* Project cards: clear image framing, per-project visual art, and tactile motion. */
 .project-grid{perspective:1200px}
