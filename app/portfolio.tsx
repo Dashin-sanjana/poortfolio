@@ -4,7 +4,6 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import * as THREE from "three";
 import { ArrowDown, ArrowDownRight, ArrowUpRight, ArrowUp, Menu, X } from "lucide-react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type Project = {
   name: string;
@@ -180,7 +179,7 @@ function AmbientScene() {
       }
       const geometry = new THREE.BufferGeometry();
       geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-      const material = new THREE.PointsMaterial({ color: 0x8b9d72, size: 0.02, transparent: true, opacity: 0.52, sizeAttenuation: true });
+      const material = new THREE.PointsMaterial({ color: 0xff7135, size: 0.02, transparent: true, opacity: 0.58, sizeAttenuation: true });
       const points = new THREE.Points(geometry, material);
       scene.add(points);
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -241,7 +240,6 @@ export default function Portfolio() {
   const visibleProjects = projects.filter((project) => activeFilter === "All work" || (activeFilter === "iOS & mobile" ? /ios|mobile/i.test(project.type) : !/ios|mobile/i.test(project.type)));
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
       return;
@@ -249,15 +247,6 @@ export default function Portfolio() {
     const context = gsap.context(() => {
       gsap.fromTo(".hero-copy > *", { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.11, ease: "power3.out", delay: 0.15 });
       gsap.fromTo(".hero-portrait", { y: 24, opacity: 0, scale: 0.98 }, { y: 0, opacity: 1, scale: 1, duration: 1.1, ease: "power3.out", delay: 0.28 });
-      gsap.utils.toArray<HTMLElement>(".reveal").forEach((element) => {
-        gsap.fromTo(element, { y: 34, opacity: 0 }, {
-          y: 0,
-          opacity: 1,
-          duration: 0.75,
-          ease: "power2.out",
-          scrollTrigger: { trigger: element, start: "top 88%", once: true },
-        });
-      });
     });
     return () => context.revert();
   }, []);
@@ -293,7 +282,7 @@ export default function Portfolio() {
           <AmbientScene />
           <div className="hero-copy">
             <p className="eyebrow"><span className="availability-dot" /> Aspiring iOS Developer <span className="eyebrow-separator">·</span> Colombo, Sri Lanka</p>
-            <h1 id="hero-title">Building the<br /><em>future of iOS.</em></h1>
+            <h1 id="hero-title">I’m Dashin.<br /><em>I build for iOS.</em></h1>
             <p className="hero-lede">I’m Dashin Sanjana — a Software Engineering undergraduate and software engineer building thoughtful mobile experiences and useful full-stack products.</p>
             <div className="hero-actions"><a href="#work" className="button button-dark">Explore my work <ArrowDownRight size={17} /></a><a href="mailto:dashinsanjana@gmail.com" className="text-link">Let’s talk <ArrowUpRight size={16} /></a></div>
             <div className="hero-footnote"><span>01 / 04</span><span>Swift · SwiftUI · SwiftData</span></div>
