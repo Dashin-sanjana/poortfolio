@@ -196,11 +196,48 @@ function AmbientScene() {
       const material = new THREE.PointsMaterial({ color: 0xff7135, size: 0.02, transparent: true, opacity: 0.58, sizeAttenuation: true });
       const points = new THREE.Points(geometry, material);
       scene.add(points);
+
+      const ribbonGroup = new THREE.Group();
+      const ribbonGeometries: THREE.BufferGeometry[] = [];
+      const ribbonMaterials: THREE.LineBasicMaterial[] = [];
+      for (let band = 0; band < 3; band += 1) {
+        const segments = 180;
+        const ribbonPositions = new Float32Array((segments + 1) * 3);
+        const radius = 1.9 + band * 0.34;
+        for (let segment = 0; segment <= segments; segment += 1) {
+          const angle = (segment / segments) * Math.PI * 2;
+          ribbonPositions[segment * 3] = Math.cos(angle) * radius;
+          ribbonPositions[segment * 3 + 1] = Math.sin(angle) * radius * 0.68 + Math.sin(angle * 3 + band) * 0.11;
+          ribbonPositions[segment * 3 + 2] = Math.sin(angle * 2 + band * 0.7) * 0.12;
+        }
+        const ribbonGeometry = new THREE.BufferGeometry();
+        ribbonGeometry.setAttribute("position", new THREE.BufferAttribute(ribbonPositions, 3));
+        const ribbonMaterial = new THREE.LineBasicMaterial({
+          color: 0xff7135,
+          transparent: true,
+          opacity: 0.17 - band * 0.035,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        });
+        ribbonGeometries.push(ribbonGeometry);
+        ribbonMaterials.push(ribbonMaterial);
+        ribbonGroup.add(new THREE.LineLoop(ribbonGeometry, ribbonMaterial));
+      }
+      scene.add(ribbonGroup);
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const placeRibbons = () => {
+        ribbonGroup.position.set(root.clientWidth < 680 ? 0.15 : 1.25, 0, -0.65);
+      };
+      placeRibbons();
       let frame = 0;
       const render = () => {
-        points.rotation.y += 0.00038;
-        points.rotation.x = Math.sin(performance.now() * 0.00012) * 0.025;
+        const time = performance.now() * 0.001;
+        points.rotation.y = time * 0.026;
+        points.rotation.x = Math.sin(time * 0.35) * 0.045;
+        points.position.x = Math.sin(time * 0.2) * 0.13;
+        ribbonGroup.rotation.z = time * 0.045;
+        ribbonGroup.rotation.x = Math.sin(time * 0.28) * 0.09;
+        ribbonGroup.position.y = Math.sin(time * 0.32) * 0.12;
         renderer.render(scene, camera);
         if (!reduced) frame = requestAnimationFrame(render);
       };
@@ -210,6 +247,7 @@ function AmbientScene() {
         camera.aspect = root.clientWidth / root.clientHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(root.clientWidth, root.clientHeight);
+        placeRibbons();
       };
       window.addEventListener("resize", resize);
       return () => {
@@ -217,6 +255,8 @@ function AmbientScene() {
         window.removeEventListener("resize", resize);
         geometry.dispose();
         material.dispose();
+        ribbonGeometries.forEach((ribbonGeometry) => ribbonGeometry.dispose());
+        ribbonMaterials.forEach((ribbonMaterial) => ribbonMaterial.dispose());
         renderer.dispose();
         renderer.domElement.remove();
       };
