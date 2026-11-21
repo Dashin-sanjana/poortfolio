@@ -14,6 +14,7 @@ type Project = {
   imageFit?: "contain" | "cover";
   visual?: "calculator" | "swiftdata" | "velora" | "bridge" | "bearing" | "marketplace";
   href?: string;
+  linkLabel?: string;
   tags: string[];
   featured?: boolean;
   status?: string;
@@ -53,6 +54,7 @@ const projects: Project[] = [
     visual: "bridge",
     description: "A professional business website. Visit the live site to explore the published work.",
     href: "https://www.workbridgesolution.com/",
+    linkLabel: "Visit website",
     tags: ["Website", "Professional work"],
     featured: true,
   },
@@ -70,7 +72,8 @@ const projects: Project[] = [
     type: "Full-stack marketplace",
     visual: "marketplace",
     description: "Classifieds marketplace built with React, TypeScript, NestJS, Prisma, and PostgreSQL.",
-    href: "https://github.com/Dashin-sanjana/New-Zealankanz-Frontend",
+    href: "https://new-zealankanz-frontend.vercel.app",
+    linkLabel: "View live project",
     tags: ["React", "NestJS", "Prisma"],
   },
   {
@@ -79,7 +82,6 @@ const projects: Project[] = [
     description: "A responsive web app for exploring Sri Lanka’s places and culture, with personalized trip planning and booking flows.",
     image: "/assets/sl_guide_preview.png",
     imageAlt: "SL Guide portfolio project preview",
-    href: "https://github.com/Dashin-sanjana/SL-GUIDE",
     tags: ["Web app", "Travel"],
   },
   {
@@ -89,7 +91,8 @@ const projects: Project[] = [
     image: "/assets/clothes_11605848-removebg-preview.png",
     imageFit: "contain",
     imageAlt: "Fashion illustration for the Fably project",
-    href: "https://github.com/fablypro/Fably",
+    href: "https://fably.pro",
+    linkLabel: "Visit website",
     tags: ["Mobile", "Fashion"],
   },
   {
@@ -98,7 +101,6 @@ const projects: Project[] = [
     description: "Mobile commerce project for browsing products, filtering, purchases, order tracking, and recommendations.",
     image: "/assets/E%20Clothing.png",
     imageAlt: "E-Clothing project image",
-    href: "https://github.com/Dashin-sanjana/E-clothing",
     tags: ["Mobile", "Commerce"],
   },
   {
@@ -108,7 +110,6 @@ const projects: Project[] = [
     image: "/assets/airline_12315171-removebg-preview.png",
     imageFit: "contain",
     imageAlt: "Airplane icon for the Plane Management System",
-    href: "https://github.com/Dashin-sanjana/Plane-ticket-management",
     tags: ["Java", "Systems"],
   },
   {
@@ -118,7 +119,6 @@ const projects: Project[] = [
     image: "/assets/achievement_11300864-removebg-preview.png",
     imageFit: "contain",
     imageAlt: "Achievement icon for the Student Exam Grade System",
-    href: "https://github.com/Dashin-sanjana/Ticketing-System",
     tags: ["Education", "Application"],
   },
   {
@@ -146,7 +146,6 @@ const projects: Project[] = [
     image: "/assets/expense%20tracker.png",
     imageFit: "cover",
     imageAlt: "Illustration representing the Personal Expense Tracker",
-    href: "https://github.com/Dashin-sanjana/expense-tracker",
     tags: ["Web app", "Finance"],
   },
 ];
@@ -296,7 +295,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <h3>{project.name}</h3>
         <p>{project.description}</p>
         <div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-        {project.href && <a className="project-link" href={project.href} target="_blank" rel="noreferrer">{project.href.includes("github") ? "View project" : "Visit website"}<ArrowUpRight size={16} /></a>}
+        {project.href && <a className="project-link" href={project.href} target="_blank" rel="noreferrer">{project.linkLabel || "View live project"}<ArrowUpRight size={16} /></a>}
       </div>
     </article>
   );
