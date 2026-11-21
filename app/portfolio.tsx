@@ -180,7 +180,7 @@ function AmbientScene() {
       }
       const geometry = new THREE.BufferGeometry();
       geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-      const material = new THREE.PointsMaterial({ color: 0xb7e995, size: 0.018, transparent: true, opacity: 0.58, sizeAttenuation: true });
+      const material = new THREE.PointsMaterial({ color: 0x8b9d72, size: 0.02, transparent: true, opacity: 0.52, sizeAttenuation: true });
       const points = new THREE.Points(geometry, material);
       scene.add(points);
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
