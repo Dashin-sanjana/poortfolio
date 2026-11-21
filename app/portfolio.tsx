@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as R
 import * as THREE from "three";
 import { ArrowDown, ArrowDownRight, ArrowUpRight, ArrowUp, Menu, X } from "lucide-react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type Project = {
   name: string;
@@ -168,6 +169,74 @@ const certificates = [
   ["Web Development", "University of Moratuwa", ""],
   ["English Language", "Cambridge School", ""],
 ];
+
+const storyScenes = [
+  { id: "shape", number: "01", title: "Shape the idea", detail: "Map the problem, sketch the flow, and decide what the product should feel like.", label: "PRODUCT THINKING", window: "A clearer first step" },
+  { id: "build", number: "02", title: "Build the experience", detail: "Turn the first sketch into thoughtful interfaces, with SwiftUI and the web in the toolkit.", label: "DESIGN · DEVELOPMENT", window: "A screen taking shape" },
+  { id: "connect", number: "03", title: "Connect the pieces", detail: "Bring the interface, data, and services together into a useful full-stack product.", label: "FRONTEND · BACKEND", window: "Systems working together" },
+  { id: "refine", number: "04", title: "Test and refine", detail: "Check real workflows, fix rough edges, and keep improving the details people notice.", label: "QUALITY · ITERATION", window: "Ready for the next pass" },
+];
+
+function ScrollStory() {
+  const [activeScene, setActiveScene] = useState(0);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const context = gsap.context(() => {
+      const chapters = gsap.utils.toArray<HTMLElement>(".story-chapter");
+      chapters.forEach((chapter, index) => {
+        ScrollTrigger.create({
+          trigger: chapter,
+          start: "top 62%",
+          end: "bottom 38%",
+          onEnter: () => setActiveScene(index),
+          onEnterBack: () => setActiveScene(index),
+        });
+      });
+    });
+    return () => context.revert();
+  }, []);
+
+  const scene = storyScenes[activeScene];
+
+  return (
+    <section className="story-section" aria-labelledby="story-title">
+      <div className="story-heading">
+        <p className="section-kicker"><span>01</span><span>A little about how I work</span></p>
+        <h2 id="story-title">Scroll through<br /><em>my process.</em></h2>
+      </div>
+      <div className="story-layout">
+        <div className="story-stage-wrap">
+          <div className="story-stage" data-scene={scene.id} aria-live="polite">
+            <div className="story-stage-top"><span>DASHIN / WORKFLOW</span><span>{scene.number} — 04</span></div>
+            <div className="story-glow" aria-hidden="true" />
+            <div className="story-window" key={scene.id} aria-hidden="true">
+              <div className="story-window-bar"><span /><span /><span /><b>{scene.label}</b></div>
+              <div className={`story-window-art story-window-${scene.id}`}>
+                {scene.id === "shape" && <><i className="flow-node node-one">01</i><i className="flow-node node-two">02</i><i className="flow-node node-three">03</i><span className="flow-line flow-line-one" /><span className="flow-line flow-line-two" /><b>USER FLOW</b></>}
+                {scene.id === "build" && <><div className="phone-mock"><span /><i /><i /><i /><b>SwiftUI</b></div><div className="code-lines"><i /><i /><i /><i /><i /></div></>}
+                {scene.id === "connect" && <><span className="system-node system-ui">UI</span><span className="system-node system-api">API</span><span className="system-node system-db">DATA</span><i className="system-link link-one" /><i className="system-link link-two" /><b>CONNECTED SYSTEM</b></>}
+                {scene.id === "refine" && <><div className="test-check">✓</div><div className="test-bars"><i /><i /><i /><i /><i /><i /><i /><i /></div><b>TEST · FIX · REPEAT</b></>}
+              </div>
+              <p className="story-window-caption">{scene.window}</p>
+            </div>
+            <img className="story-avatar" src="/assets/dashin-sanjana-cartoon-avatar.png" alt="Stylized illustration of Dashin, unchanged from the portfolio artwork" />
+            <div className="story-stage-caption"><span>{scene.title}</span><span>SCROLL TO FOLLOW <b>↓</b></span></div>
+          </div>
+        </div>
+        <div className="story-chapters">
+          {storyScenes.map((item, index) => (
+            <article className={`story-chapter${activeScene === index ? " is-active" : ""}`} key={item.id} aria-current={activeScene === index ? "step" : undefined}>
+              <span className="story-chapter-number">{item.number} / 04</span>
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function AmbientScene() {
   const host = useRef<HTMLDivElement>(null);
@@ -462,6 +531,8 @@ export default function Portfolio() {
           </figure>
           <a href="#work" className="scroll-cue" aria-label="Scroll to selected work"><ArrowDown size={16} /><span>Scroll to explore</span></a>
         </section>
+
+        <ScrollStory />
 
         <section className="marquee" aria-label="Focus areas"><div className="marquee-track">{[0, 1].map((copy) => <span key={copy}>SWIFT <b>✳</b> PRODUCT THINKING <b>✳</b> MOBILE EXPERIENCES <b>✳</b> SOFTWARE ENGINEERING <b>✳</b> SWIFTUI <b>✳</b> </span>)}</div></section>
 
