@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 import * as THREE from "three";
 import { ArrowDown, ArrowDownRight, ArrowUpRight, ArrowUp, Menu, X } from "lucide-react";
 import { gsap } from "gsap";
@@ -11,6 +11,8 @@ type Project = {
   description: string;
   image?: string;
   imageAlt?: string;
+  imageFit?: "contain" | "cover";
+  visual?: "calculator" | "swiftdata" | "velora" | "bridge" | "bearing" | "marketplace";
   href?: string;
   tags: string[];
   featured?: boolean;
@@ -21,6 +23,7 @@ const projects: Project[] = [
   {
     name: "Parcel Cost Calculator",
     type: "iOS learning project",
+    visual: "calculator",
     status: "SwiftUI learning · Demo asset pending",
     description: "A practical SwiftUI learning project for calculating parcel delivery costs. The source and original screenshot are not present in this repository yet.",
     tags: ["Swift", "SwiftUI", "iOS"],
@@ -29,6 +32,7 @@ const projects: Project[] = [
   {
     name: "SwiftData learning applications",
     type: "iOS learning project",
+    visual: "swiftdata",
     status: "Learning · Demo asset pending",
     description: "Small SwiftData practice builds for learning local persistence in SwiftUI. Source links and screenshots are not present in this repository yet.",
     tags: ["Swift", "SwiftUI", "SwiftData"],
@@ -37,6 +41,7 @@ const projects: Project[] = [
   {
     name: "Velora",
     type: "Independent product",
+    visual: "velora",
     status: "In development · MVP preparation",
     description: "An independently owned dating product in early development, built around a considered full-stack foundation.",
     tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
@@ -45,6 +50,7 @@ const projects: Project[] = [
   {
     name: "Work Bridge Solution",
     type: "Business website",
+    visual: "bridge",
     description: "A professional business website. Visit the live site to explore the published work.",
     href: "https://www.workbridgesolution.com/",
     tags: ["Website", "Professional work"],
@@ -53,6 +59,7 @@ const projects: Project[] = [
   {
     name: "Explainable Bearing Fault Diagnosis",
     type: "Final-year research",
+    visual: "bearing",
     status: "Research · In development",
     description: "Exploring bearing fault diagnosis across four CWRU operating loads and normal, inner race, outer race, and ball fault classes. The work studies 1D-CNN models, SHAP explanations, attribution consistency, physics-guided learning, and cross-load generalization.",
     tags: ["CWRU", "1D-CNN", "SHAP", "Research"],
@@ -61,6 +68,7 @@ const projects: Project[] = [
   {
     name: "NewZealankans Marketplace",
     type: "Full-stack marketplace",
+    visual: "marketplace",
     description: "Classifieds marketplace built with React, TypeScript, NestJS, Prisma, and PostgreSQL.",
     href: "https://github.com/Dashin-sanjana/New-Zealankanz-Frontend",
     tags: ["React", "NestJS", "Prisma"],
@@ -79,6 +87,7 @@ const projects: Project[] = [
     type: "Fashion mobile app",
     description: "AI-assisted fashion app concept for outfit visualizations, personal styling, wardrobe planning, and shopping.",
     image: "/assets/clothes_11605848-removebg-preview.png",
+    imageFit: "contain",
     imageAlt: "Fashion illustration for the Fably project",
     href: "https://github.com/fablypro/Fably",
     tags: ["Mobile", "Fashion"],
@@ -97,6 +106,7 @@ const projects: Project[] = [
     type: "Management system",
     description: "A system for managing flight timetables, crew rostering, and aircraft maintenance.",
     image: "/assets/airline_12315171-removebg-preview.png",
+    imageFit: "contain",
     imageAlt: "Airplane icon for the Plane Management System",
     href: "https://github.com/Dashin-sanjana/Plane-ticket-management",
     tags: ["Java", "Systems"],
@@ -106,6 +116,7 @@ const projects: Project[] = [
     type: "Education system",
     description: "A platform concept for managing student grades securely and efficiently.",
     image: "/assets/achievement_11300864-removebg-preview.png",
+    imageFit: "contain",
     imageAlt: "Achievement icon for the Student Exam Grade System",
     href: "https://github.com/Dashin-sanjana/Ticketing-System",
     tags: ["Education", "Application"],
@@ -115,6 +126,7 @@ const projects: Project[] = [
     type: "Awareness website",
     description: "An educational website about marine conservation and United Nations Sustainable Development Goal 14.",
     image: "/assets/tide_3408448-removebg-preview.png",
+    imageFit: "contain",
     imageAlt: "Ocean themed illustration for Life Below Water",
     tags: ["Web design", "SDG 14"],
   },
@@ -123,6 +135,7 @@ const projects: Project[] = [
     type: "Interface design",
     description: "User interface concepts for web and mobile products, including user flows, wireframes, and visual screens.",
     image: "/assets/website_14654068-removebg-preview.png",
+    imageFit: "contain",
     imageAlt: "Website design icon",
     tags: ["UI/UX", "Design"],
   },
@@ -130,8 +143,9 @@ const projects: Project[] = [
     name: "Personal Expense Tracker",
     type: "Finance web app",
     description: "A responsive income and expense tracker with authentication, live financial records, date and category filters, and Chart.js visualizations.",
-    image: "/assets/calculator_12405686.png",
-    imageAlt: "Calculator illustration for the Personal Expense Tracker",
+    image: "/assets/expense%20tracker.png",
+    imageFit: "cover",
+    imageAlt: "Illustration representing the Personal Expense Tracker",
     href: "https://github.com/Dashin-sanjana/expense-tracker",
     tags: ["Web app", "Finance"],
   },
@@ -215,12 +229,27 @@ function AmbientScene() {
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const handlePointerMove = (event: ReactPointerEvent<HTMLElement>) => {
+    if (event.pointerType !== "mouse") return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width;
+    const y = (event.clientY - bounds.top) / bounds.height;
+    event.currentTarget.style.setProperty("--tilt-x", `${(x - 0.5) * 3}deg`);
+    event.currentTarget.style.setProperty("--tilt-y", `${(0.5 - y) * 3}deg`);
+    event.currentTarget.style.setProperty("--pointer-x", `${x * 100}%`);
+    event.currentTarget.style.setProperty("--pointer-y", `${y * 100}%`);
+  };
+  const resetPointer = (event: ReactPointerEvent<HTMLElement>) => {
+    event.currentTarget.style.setProperty("--tilt-x", "0deg");
+    event.currentTarget.style.setProperty("--tilt-y", "0deg");
+  };
+
   return (
-    <article className={`project-card reveal ${project.featured ? "project-card-featured" : ""}`} style={{ "--card-index": index } as CSSProperties}>
+    <article className={`project-card reveal ${project.featured ? "project-card-featured" : ""}`} style={{ "--card-index": index } as CSSProperties} onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
       {project.image ? (
-        <div className="project-image"><img src={project.image} alt={project.imageAlt || ""} loading="lazy" /></div>
+        <div className={`project-image image-fit-${project.imageFit || "cover"}`}><img src={project.image} alt={project.imageAlt || ""} loading="lazy" /></div>
       ) : (
-        <div className={`project-art project-art-${index % 3}`} aria-hidden="true"><span>{String(index + 1).padStart(2, "0")}</span><i /></div>
+        <ProjectArtwork kind={project.visual || "marketplace"} />
       )}
       <div className="project-body">
         <div className="project-topline"><span>{project.type}</span>{project.status && <span className="status-pill">{project.status}</span>}</div>
@@ -230,6 +259,63 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         {project.href && <a className="project-link" href={project.href} target="_blank" rel="noreferrer">{project.href.includes("github") ? "View project" : "Visit website"}<ArrowUpRight size={16} /></a>}
       </div>
     </article>
+  );
+}
+
+function ProjectArtwork({ kind }: { kind: NonNullable<Project["visual"]> }) {
+  return (
+    <div className={`project-art project-art-${kind}`} aria-hidden="true">
+      <span className="art-label">PROJECT VISUAL · {kind === "bearing" ? "RESEARCH" : "PRODUCT"}</span>
+      <svg viewBox="0 0 600 330" role="presentation" focusable="false">
+        {kind === "calculator" && <>
+          <rect x="270" y="28" width="270" height="274" rx="18" className="art-panel" />
+          <text x="296" y="69" className="art-eyebrow">PARCEL ESTIMATE</text>
+          <text x="296" y="125" className="art-value">LKR 1,250</text>
+          <text x="296" y="153" className="art-muted">Delivery cost · 2.4 kg</text>
+          <path d="M296 183h218" className="art-rule" />
+          {[0, 1, 2].map((n) => <g key={n}><rect x="296" y={202 + n * 26} width="34" height="16" rx="5" className="art-chip" /><rect x={342 + n * 47} y={202 + n * 26} width={38 + n * 8} height="5" rx="3" className="art-line" /></g>)}
+          <circle cx="126" cy="171" r="75" className="art-orbit" /><path d="M82 171h88M126 127v88" className="art-accent-stroke" />
+          <text x="99" y="185" className="art-symbol">₹</text>
+        </>}
+        {kind === "swiftdata" && <>
+          <rect x="197" y="13" width="204" height="303" rx="29" className="art-phone" />
+          <rect x="209" y="28" width="180" height="274" rx="20" className="art-screen" />
+          <rect x="270" y="36" width="58" height="8" rx="4" className="art-notch" />
+          <text x="230" y="80" className="art-eyebrow">LIBRARY</text><text x="230" y="108" className="art-title">Saved items</text>
+          {[0, 1, 2].map((n) => <g key={n}><rect x="225" y={126 + n * 51} width="148" height="42" rx="10" className="art-row" /><circle cx="245" cy={147 + n * 51} r="9" className="art-accent-fill" /><rect x="263" y={139 + n * 51} width="76" height="5" rx="3" className="art-line" /><rect x="263" y={149 + n * 51} width="51" height="4" rx="2" className="art-dim-line" /></g>)}
+          <circle cx="135" cy="171" r="45" className="art-orbit" /><path d="M119 171h32M135 155v32" className="art-accent-stroke" />
+        </>}
+        {kind === "velora" && <>
+          <rect x="331" y="29" width="202" height="268" rx="18" className="art-panel" />
+          <circle cx="432" cy="117" r="59" className="art-avatar art-avatar-one" />
+          <circle cx="432" cy="97" r="20" className="art-avatar-face" /><path d="M393 153c8-34 70-34 78 0" className="art-avatar-body" />
+          <text x="365" y="207" className="art-title">A little closer.</text><rect x="366" y="225" width="132" height="6" rx="3" className="art-dim-line" />
+          <rect x="365" y="252" width="65" height="24" rx="12" className="art-button" /><rect x="438" y="252" width="60" height="24" rx="12" className="art-row" />
+          <rect x="67" y="78" width="157" height="199" rx="16" className="art-card-back" /><circle cx="145" cy="150" r="42" className="art-avatar art-avatar-two" /><path d="M113 225c8-28 56-28 64 0" className="art-avatar-body" />
+          <circle cx="145" cy="127" r="15" className="art-avatar-face" />
+        </>}
+        {kind === "bridge" && <>
+          <rect x="48" y="41" width="503" height="247" rx="15" className="art-panel" />
+          <path d="M48 78h503" className="art-rule" /><circle cx="72" cy="60" r="4" className="art-dot" /><circle cx="88" cy="60" r="4" className="art-dot" /><circle cx="104" cy="60" r="4" className="art-dot" />
+          <text x="82" y="119" className="art-eyebrow">WORK BRIDGE SOLUTION</text><text x="82" y="161" className="art-title">Connecting people</text><text x="82" y="190" className="art-title">with opportunity.</text>
+          <rect x="82" y="214" width="94" height="27" rx="13" className="art-button" /><rect x="190" y="224" width="112" height="5" rx="3" className="art-dim-line" />
+          <rect x="387" y="107" width="128" height="150" rx="13" className="art-card-back" /><path d="M409 219l25-34 21 14 33-50" className="art-accent-stroke" /><circle cx="489" cy="149" r="6" className="art-accent-fill" />
+        </>}
+        {kind === "bearing" && <>
+          <text x="52" y="61" className="art-eyebrow">CWRU · CROSS-LOAD ANALYSIS</text><text x="52" y="96" className="art-title">Bearing signal study</text>
+          {[0, 1, 2].map((n) => <g key={n}><rect x="52" y={119 + n * 57} width="284" height="44" rx="8" className="art-panel" /><path d={`M66 ${142 + n * 57}h255`} className="art-rule" /><path d={n === 0 ? "M66 141c13-19 17 18 31-1s18-11 29 0 18-20 31-3 18 18 32-1 18-15 31 0 18 5 31-1 18-12 31 1 18 13 31 0 18-10 37 1" : n === 1 ? "M66 198c11-4 18-14 30 0s22 13 32-5 17-13 29 5 22 8 33-3 18-15 30 4 21 13 33-1 22-13 35 2 21 10 37-2" : "M66 255c14-17 17 16 32 0s17-8 29 0 18-19 31 1 20 15 33-4 18-9 31 3 18 12 31-1 21-15 33 1 21 7 37 0"} className="art-accent-stroke" /></g>)}
+          <rect x="372" y="118" width="174" height="159" rx="12" className="art-panel" />
+          {[0, 1, 2, 3, 4].map((col) => [0, 1, 2, 3].map((row) => <rect key={`${col}-${row}`} x={390 + col * 27} y={139 + row * 27} width="20" height="20" rx="3" className={`art-heat heat-${(col + row) % 4}`} />))}
+          <text x="390" y="264" className="art-eyebrow">FAULT CLASSES</text>
+        </>}
+        {kind === "marketplace" && <>
+          <text x="51" y="61" className="art-eyebrow">COMMUNITY MARKETPLACE</text><text x="51" y="100" className="art-title">Find your next</text><text x="51" y="132" className="art-title">good thing.</text>
+          <rect x="52" y="159" width="197" height="32" rx="16" className="art-row" /><circle cx="69" cy="175" r="6" className="art-dot" /><rect x="84" y="172" width="105" height="5" rx="3" className="art-dim-line" />
+          {[0, 1, 2].map((n) => <g key={n}><rect x={286 + n * 86} y={76 + (n % 2) * 12} width="76" height="190" rx="12" className="art-panel" /><rect x={296 + n * 86} y={88 + (n % 2) * 12} width="56" height="99" rx="8" className={`art-listing listing-${n}`} /><rect x={297 + n * 86} y={200 + (n % 2) * 12} width="42" height="5" rx="3" className="art-line" /><rect x={297 + n * 86} y={214 + (n % 2) * 12} width="30" height="4" rx="2" className="art-dim-line" /><text x={297 + n * 86} y={250 + (n % 2) * 12} className="art-price">LKR ···</text></g>)}
+        </>}
+      </svg>
+      <span className="art-disclaimer">Illustrative project artwork</span>
+    </div>
   );
 }
 
@@ -250,6 +336,44 @@ export default function Portfolio() {
     });
     return () => context.revert();
   }, []);
+
+  useEffect(() => {
+    const cards = Array.from(document.querySelectorAll<HTMLElement>(".project-card"));
+    if (!cards.length) return;
+    let observer: IntersectionObserver | undefined;
+
+    const context = gsap.context(() => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+        gsap.set(cards, { clearProps: "all" });
+        return;
+      }
+
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const card = entry.target as HTMLElement;
+          gsap.to(card, {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.72,
+            delay: (Number(card.style.getPropertyValue("--card-index")) % 2) * 0.08,
+            ease: "power3.out",
+            overwrite: "auto",
+          });
+          cardObserver.unobserve(card);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -5% 0px" });
+
+      cards.forEach((card) => {
+        gsap.set(card, { autoAlpha: 0, y: 28, scale: 0.985 });
+        cardObserver.observe(card);
+      });
+      observer = cardObserver;
+    });
+
+    return () => { observer?.disconnect(); context.revert(); };
+  }, [activeFilter]);
 
   useEffect(() => {
     const bar = document.querySelector<HTMLElement>(".reading-progress");
