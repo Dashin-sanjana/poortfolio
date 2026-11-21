@@ -111,4 +111,4 @@ body{background:#090909;color:#f4f2ee}
 .project-art-velora .art-orbit{animation:soft-pulse 4s ease-in-out infinite alternate}
 @keyframes signal-flow{to{stroke-dashoffset:-90}}
 @keyframes soft-pulse{to{opacity:.48;transform:scale(1.04);transform-origin:center}}
-@media(max-width:680px){.project-card{transform:none!important}.project-image,.project-art{height:clamp(230px,70vw,340px)}.image-fit-contain img{padding:42px}.art-label{left:17px;top:15px}.art-disclaimer{right:14px;bottom:11px}}
+@media(max-width:680px){.project-card{--tilt-x:0deg;--tilt-y:0deg}.project-image,.project-art{height:clamp(230px,70vw,340px)}.image-fit-contain img{padding:42px}.art-label{left:17px;top:15px}.art-disclaimer{right:14px;bottom:11px}}

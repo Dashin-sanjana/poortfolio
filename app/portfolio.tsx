@@ -344,7 +344,6 @@ export default function Portfolio() {
 
     const context = gsap.context(() => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
-        gsap.set(cards, { clearProps: "all" });
         return;
       }
 
@@ -353,7 +352,6 @@ export default function Portfolio() {
           if (!entry.isIntersecting) return;
           const card = entry.target as HTMLElement;
           gsap.to(card, {
-            autoAlpha: 1,
             y: 0,
             scale: 1,
             duration: 0.72,
@@ -366,7 +364,7 @@ export default function Portfolio() {
       }, { threshold: 0.12, rootMargin: "0px 0px -5% 0px" });
 
       cards.forEach((card) => {
-        gsap.set(card, { autoAlpha: 0, y: 28, scale: 0.985 });
+        gsap.set(card, { y: 24, scale: 0.985 });
         cardObserver.observe(card);
       });
       observer = cardObserver;
