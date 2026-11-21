@@ -171,10 +171,9 @@ const certificates = [
 ];
 
 const storyScenes = [
-  { id: "shape", number: "01", title: "Shape the idea", detail: "Map the problem, sketch the flow, and decide what the product should feel like.", label: "PRODUCT THINKING", window: "A clearer first step" },
-  { id: "build", number: "02", title: "Build the experience", detail: "Turn the first sketch into thoughtful interfaces, with SwiftUI and the web in the toolkit.", label: "DESIGN · DEVELOPMENT", window: "A screen taking shape" },
-  { id: "connect", number: "03", title: "Connect the pieces", detail: "Bring the interface, data, and services together into a useful full-stack product.", label: "FRONTEND · BACKEND", window: "Systems working together" },
-  { id: "refine", number: "04", title: "Test and refine", detail: "Check real workflows, fix rough edges, and keep improving the details people notice.", label: "QUALITY · ITERATION", window: "Ready for the next pass" },
+  { id: "stand", number: "01", title: "Start with an idea", detail: "I begin by getting clear on the problem and what the experience should feel like.", label: "A NEW PROJECT" },
+  { id: "code", number: "02", title: "Settle in and build", detail: "Then I get into the code—building the interface, connecting the pieces, and working through the details.", label: "IN THE FLOW" },
+  { id: "finish", number: "03", title: "Share what I made", detail: "When the work is ready, I bring it together, share the result, and enjoy that final little win.", label: "PROJECT COMPLETE" },
 ];
 
 function ScrollStory() {
@@ -197,7 +196,8 @@ function ScrollStory() {
     return () => context.revert();
   }, []);
 
-  const scene = storyScenes[activeScene];
+  const sceneIndex = Math.min(activeScene, storyScenes.length - 1);
+  const scene = storyScenes[sceneIndex];
 
   return (
     <section className="story-section" aria-labelledby="story-title">
@@ -208,26 +208,19 @@ function ScrollStory() {
       <div className="story-layout">
         <div className="story-stage-wrap">
           <div className="story-stage" data-scene={scene.id} aria-live="polite">
-            <div className="story-stage-top"><span>DASHIN / WORKFLOW</span><span>{scene.number} — 04</span></div>
+            <div className="story-stage-top"><span>DASHIN / WORKFLOW</span><span>{scene.number} — 03</span></div>
             <div className="story-glow" aria-hidden="true" />
-            <div className="story-window" key={scene.id} aria-hidden="true">
-              <div className="story-window-bar"><span /><span /><span /><b>{scene.label}</b></div>
-              <div className={`story-window-art story-window-${scene.id}`}>
-                {scene.id === "shape" && <><i className="flow-node node-one">01</i><i className="flow-node node-two">02</i><i className="flow-node node-three">03</i><span className="flow-line flow-line-one" /><span className="flow-line flow-line-two" /><b>USER FLOW</b></>}
-                {scene.id === "build" && <><div className="phone-mock"><span /><i /><i /><i /><b>SwiftUI</b></div><div className="code-lines"><i /><i /><i /><i /><i /></div></>}
-                {scene.id === "connect" && <><span className="system-node system-ui">UI</span><span className="system-node system-api">API</span><span className="system-node system-db">DATA</span><i className="system-link link-one" /><i className="system-link link-two" /><b>CONNECTED SYSTEM</b></>}
-                {scene.id === "refine" && <><div className="test-check">✓</div><div className="test-bars"><i /><i /><i /><i /><i /><i /><i /><i /></div><b>TEST · FIX · REPEAT</b></>}
-              </div>
-              <p className="story-window-caption">{scene.window}</p>
+            <div className="story-sprite-frame" aria-label={`Scene ${scene.number}: ${scene.title}`}>
+              <img className="story-sprite-strip" src="/assets/dashin-workflow-story-sprite.png" alt="Three illustrated moments: standing beside the desk, coding at a laptop, and smiling after completing the project" style={{ transform: `translate3d(-${(sceneIndex / storyScenes.length) * 100}%, 0, 0)` }} />
             </div>
-            <img className="story-avatar" src="/assets/dashin-sanjana-cartoon-avatar.png" alt="Stylized illustration of Dashin, unchanged from the portfolio artwork" />
+            <p className="story-stage-detail">{scene.detail}</p>
             <div className="story-stage-caption"><span>{scene.title}</span><span>SCROLL TO FOLLOW <b>↓</b></span></div>
           </div>
         </div>
         <div className="story-chapters">
           {storyScenes.map((item, index) => (
-            <article className={`story-chapter${activeScene === index ? " is-active" : ""}`} key={item.id} aria-current={activeScene === index ? "step" : undefined}>
-              <span className="story-chapter-number">{item.number} / 04</span>
+            <article className={`story-chapter${sceneIndex === index ? " is-active" : ""}`} key={item.id} aria-current={sceneIndex === index ? "step" : undefined}>
+              <span className="story-chapter-number">{item.number} / 03</span>
               <h3>{item.title}</h3>
               <p>{item.detail}</p>
             </article>
