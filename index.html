@@ -1,323 +1,724 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashin Sanjana - Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashin Sanjana - Software Engineering Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
 </head>
 <body>
-    <nav>
-        <div class="logo">Dashin Sanjana</div>
-        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-        <ul class="nav-links" id="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      
 
-    <header class="hero">
-        <div class="hero-content">
-            <img src="Untitled design-12.png" alt="Dashin Sanjana" class="profile-pic" />
-            <h1>Dashin Sanjana</h1>
-            <p>Software Engineering Undergraduate | Full-Stack Developer | UI/UX Designer</p>
-            <div class="hero-buttons">
-                <button onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
-                    View My Work
-                </button>
-                <a href="Dashin sanjana updated cv.pdf.pdf" download class="download-btn">Download CV</a>
-            </div>
+  <div id="progress-bar"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <a class="logo" href="#top" aria-label="Home">DS</a>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="eyebrow"><span class="eyebrow-prefix">// </span><span class="typed-text"></span><span class="cursor-blink">_</span></p>
+        <h1>Dashin<br><span class="gradient-text">Sanjana</span><span style="color:var(--cyan)">.</span></h1>
+        <p class="hero-intro">Associate Software Engineer and software engineering undergraduate building full-stack web apps, Flutter mobile experiences, and AI-assisted products with practical, human-friendly interfaces.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="primary-action">View work</a>
+          <a href="Dashin sanjana updated cv.pdf.pdf" download class="secondary-action">Download CV</a>
         </div>
-    </header>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">9+</span><span class="stat-label">Projects</span></div>
+          <div class="stat"><span class="stat-num">2+</span><span class="stat-label">Yrs coding</span></div>
+          <div class="stat"><span class="stat-num">2</span><span class="stat-label">Software roles</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="profile-ring-wrap">
+          <div class="ring ring-1"></div><div class="ring ring-2"></div><div class="ring ring-3"></div>
+          <div class="profile-photo"><img src="profile-dashin.png" alt="Dashin Sanjana" /></div>
+        </div>
+        <div class="float-badge badge-1"><i class="devicon-react-original colored"></i> React.js</div>
+        <div class="float-badge badge-2"><i class="devicon-flutter-plain colored"></i> Flutter</div>
+        <div class="float-badge badge-3"><i class="devicon-python-plain colored"></i> Python</div>
+        <div class="float-badge badge-4">AI / ML</div>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div><span>Scroll</span>
+    </div>
+  </header>
 
-    <main class="container">
-        <section id="about" class="section">
-            <h2>About Me</h2>
-            <p>I am a dedicated Software Engineering undergraduate passionate about
-               building innovative, user-friendly applications. With experience in full-stack
-               development, UI/UX design, and project management, I thrive on solving
-               complex problems. I’m eager to gain professional experience, enhance my
-               skills, and contribute to impactful software solutions in a collaborative
-               environment.</p>
-               <section id="projects" class="section">
-                <h2>Projects</h2>
-                <div class="project-grid">
+  <main>
 
-                  <div class="project-card">
-                    <img src="sl_guide_preview.png" alt="SL Guide" />
-                    <h3>SL Guide</h3>
-                    <p>Developed a responsive web app to explore Sri Lanka’s hidden gems and cultural treasures with personalized tour planning and seamless booking features.</p>
-                    <a href="https://github.com/Dashin-sanjana/SL-GUIDE" target="_blank" class="github-link">
-                      View on GitHub <span class="arrow">↗</span>
-                    </a>
-                  </div>
-                  
-                  <div class="project-card">
-                    <img src="clothes_11605848-removebg-preview.png" alt="Fably Project" />
-                    <h3>Fably (Fashion App)</h3>
-                    <p>
-                      An AI-powered fashion app that generates outfit visualizations, offers personalized styling,
-                      wardrobe management, couple dress matching, and shopping integration.
-                    </p>
-                    <a href="https://github.com/fablypro/Fably" target="_blank" class="github-link">
-                      View on GitHub <span class="arrow">↗</span>
-                    </a>
-                  </div>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <p class="section-label reveal"><span class="glow">01</span> / About</p>
+      <div class="about-inner">
+        <div class="about-heading reveal">
+          <h2>Developer with a<br><span class="gradient-text">design-sensitive</span> eye.</h2>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <p class="section-lede">I am an Associate Software Engineer and software engineering undergraduate focused on turning product ideas into usable systems. My work spans React and TypeScript applications, Flutter mobile apps, backend APIs, database design, UI/UX design, and early AI/ML experiments. I like building interfaces that feel clear, fast, and useful for real people.</p>
+          <div class="about-tags" style="margin-top:24px">
+            <span class="tag">Full-stack dev</span><span class="tag">Mobile apps</span>
+            <span class="tag">UI/UX design</span><span class="tag">AI / ML</span><span class="tag">Video editing</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                  <div class="project-card">
-                    <img src="E Clothing.png" alt="E-Clothing Project" />
-                    <h3>E-Clothing (Clothing Store)</h3>
-                    <p>
-                      The E-Clothing Store App is a mobile application that allows users to browse, select, and purchase clothing and accessories online. It offers secure payments, product search and filtering, order tracking, and personalized recommendations for a convenient shopping experience.
-                    </p>
-                    <a href="https://github.com/Dashin-sanjana/E-clothing" target="_blank" class="github-link">
-                      View on GitHub <span class="arrow">↗</span>
-                    </a>
-                  </div>
-              
-                  <div class="project-card">
-                    <img src="airline_12315171-removebg-preview.png" alt="Plane Management System" />
-                    <h3>Plane Management System</h3>
-                    <p>Developed a system to manage flight timetables, crew rostering, and aircraft maintenance.</p>
-                    <a href="https://github.com/Dashin-sanjana/Plane-ticket-management" target="_blank" class="github-link">
-                      View on GitHub <span class="arrow">↗</span>
-                    </a>
-                  </div>
-              
-                  <div class="project-card">
-                    <img src="achievement_11300864-removebg-preview.png" alt="Exam Grade System" />
-                    <h3>Student Exam Grade System</h3>
-                    <p>Created a platform to manage student grades securely and efficiently for educational institutions.</p>
-                    <a href="https://github.com/Dashin-sanjana/Ticketing-System" target="_blank" class="github-link">
-                      View on GitHub <span class="arrow">↗</span>
-                    </a>
-                  </div>
-              
-                  <div class="project-card">
-                    <img src="tide_3408448-removebg-preview.png" alt="Website for 'Life Below Water'" />
-                    <h3>Website for "Life Below Water"</h3>
-                    <p>Designed a site to raise awareness about marine conservation, supporting UN SDG 14.</p>
-                    <a href="#" target="_blank" class="github-link">
-                      View on GitHub <span class="arrow">↗</span>
-                    </a>
-                  </div>
-              
-                  <div class="project-card">
-                    <img src="website_14654068-removebg-preview.png" alt="UI/UX Designs" />
-                    <h3>UI/UX Designs</h3>
-                    <p>Developed user-friendly interfaces for various web and mobile applications.</p>
-                    <a href="#" target="_blank" class="github-link">
-                      View on GitHub <span class="arrow">↗</span>
-                    </a>
-                  </div>
-                  <div class="project-card">
-                    <img src="calculator_12405686.png" alt="Expense Tracker App" />
-                    <h3>Personal Expense Tracker Web App</h3>
-                    <p>
-                      Developed a responsive web app to manage income and expenses. Includes secure signup/login, real-time financial tracking,
-                      date & category filters, and dynamic Chart.js visualizations — all with a clean, intuitive dashboard UI.
-                    </p>
-                    <a href="https://github.com/Dashin-sanjana/expense-tracker" target="_blank" class="github-link">
-                      View on GitHub <span class="arrow">↗</span>
-                    </a>
-                  </div>
-                  
-                </div>
-              </section>
-              
-    
-        <section id="skills" class="skills-section">
-            <h2>🔧 Skills</h2>
-          
-            <div class="skills-container">
-              <div class="skill-group card">
-                <h3>👩‍💻 Programming Languages</h3>
-                <div class="skill-badges">
-                  <span data-tooltip="Experienced in OOP and backend"><i class="devicon-java-plain"></i> Java</span>
-                  <span data-tooltip="Data Science & Scripting"><i class="devicon-python-plain"></i> Python</span>
-                  <span data-tooltip="Web Interactivity"><i class="devicon-javascript-plain"></i> JavaScript</span>
-                  <span data-tooltip="Cross-platform development"><i class="devicon-dart-plain"></i> Dart</span>
-                  <span data-tooltip="Low-level & Competitive Coding"><i class="devicon-c-plain"></i> C/C++</span>
-                  <span data-tooltip="Database Queries"><i class="devicon-mysql-plain"></i> SQL</span>
-                </div>
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <p class="section-label reveal"><span class="glow">02</span> / Work</p>
+      <div class="section-heading reveal"><h2>Selected <span class="gradient-text">projects</span>.</h2></div>
+
+      <div class="project-grid">
+
+        <!-- NewZealankans Marketplace — FULL STACK — cyan green -->
+        <article class="project-card glass-card reveal" style="--ar:0;--ag:245;--ab:190">
+          <div class="browser-mockup">
+            <div class="b-tabbar">
+              <div class="b-tab">
+                <div class="b-favicon"></div>
+                <span class="b-tab-title">NewZealankans Marketplace</span>
+                <span class="b-tab-close">×</span>
               </div>
-          
-              <div class="skill-group card">
-                <h3>🌐 Web Development</h3>
-                <div class="skill-badges">
-                  <span data-tooltip="Web page structure"><i class="devicon-html5-plain"></i> HTML</span>
-                  <span data-tooltip="Styling and Layouts"><i class="devicon-css3-plain"></i> CSS</span>
-                  <span data-tooltip="Responsive design"><i class="devicon-bootstrap-plain"></i> Bootstrap</span>
-                  <span data-tooltip="Component-based UI"><i class="devicon-react-original"></i> React.js</span>
-                  <span data-tooltip="JavaScript backend"><i class="devicon-nodejs-plain"></i> Node.js</span>
-                  <span data-tooltip="Minimalist backend framework"><i class="devicon-express-original"></i> Express.js</span>
-                  <span data-tooltip="API communication">🔗 REST APIs</span>
-                </div>
+              <span class="b-tab-new">+</span>
+            </div>
+            <div class="b-toolbar">
+              <div class="b-nav">
+                <span class="b-nav-btn dim">←</span>
+                <span class="b-nav-btn dim">→</span>
+                <span class="b-nav-btn">↻</span>
               </div>
-          
-              <div class="skill-group card">
-                <h3>📱 Mobile App Development</h3>
-                <div class="skill-badges">
-                  <span data-tooltip="Cross-platform UI toolkit"><i class="devicon-flutter-plain"></i> Flutter</span>
-                  <span data-tooltip="Native Android Dev"><i class="devicon-android-plain"></i> Android</span>
-                  <span data-tooltip="Native iOS Dev"><i class="devicon-swift-plain"></i> iOS (Swift)</span>
-                </div>
+              <div class="b-urlbar">
+                <span class="b-lock">🔒</span>
+                <span class="b-url-text">github.com/Dashin-sanjana/New-Zealankanz-Frontend</span>
               </div>
-          
-              <div class="skill-group card">
-                <h3>☁️ Backend & Databases</h3>
-                <div class="skill-badges">
-                  <span data-tooltip="Python Microframework"><i class="devicon-flask-original"></i> Flask</span>
-                  <span data-tooltip="Realtime & NoSQL"><i class="devicon-firebase-plain"></i> Firebase</span>
-                  <span data-tooltip="NoSQL document DB"><i class="devicon-mongodb-plain"></i> MongoDB</span>
-                  <span data-tooltip="Relational DBMS"><i class="devicon-mysql-plain"></i> MySQL</span>
-                  <span data-tooltip="Advanced RDBMS"><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
-                  <span data-tooltip="Lightweight DB"><i class="devicon-sqlite-plain"></i> SQLite</span>
-                </div>
-              </div>
-          
-              <div class="skill-group card">
-                <h3>🧠 AI/ML & CV</h3>
-                <div class="skill-badges">
-                  <span data-tooltip="Computer vision library"><i class="devicon-opencv-plain"></i> OpenCV</span>
-                  <span data-tooltip="Deep learning framework"><i class="devicon-tensorflow-original"></i> TensorFlow</span>
-                  <span data-tooltip="Deep learning APIs"><i class="devicon-keras-plain"></i> Keras</span>
-                  <span data-tooltip="ML algorithms"><i class="devicon-scikitlearn-plain"></i> scikit-learn</span>
-                  <span data-tooltip="Object detection">🧿 YOLOv5</span>
-                  <span data-tooltip="Pose/Hand tracking">🪞 Mediapipe</span>
-                </div>
-              </div>
-          
-              <div class="skill-group card">
-                <h3>🔧 Tools & Platforms</h3>
-                <div class="skill-badges">
-                  <span data-tooltip="Version control"><i class="devicon-git-plain"></i> Git</span>
-                  <span data-tooltip="Remote repositories"><i class="devicon-github-original"></i> GitHub</span>
-                  <span data-tooltip="Code editor"><i class="devicon-vscode-plain"></i> VS Code</span>
-                  <span data-tooltip="API testing"><i class="devicon-postman-plain"></i> Postman</span>
-                  <span data-tooltip="UI design tool"><i class="devicon-figma-plain"></i> Figma</span>
-                  <span data-tooltip="Open-source OS"><i class="devicon-linux-plain"></i> Linux</span>
-                  <span data-tooltip="Containerization basics"><i class="devicon-docker-plain"></i> Docker</span>
-                </div>
-              </div>
-          
-              <div class="skill-group card">
-                <h3>🛠️ Other Skills</h3>
-                <div class="skill-badges">
-                  <span data-tooltip="Algorithmic thinking">🧩 Problem Solving</span>
-                  <span data-tooltip="User experience focus">🎨 UI/UX Design</span>
-                  <span data-tooltip="Team workflows">📈 Agile/Scrum</span>
-                  <span data-tooltip="External services integration">🔌 API Integration</span>
-                  <span data-tooltip="Collaboration & Communication">🤝 Team Collaboration</span>
-                </div>
+              <div class="b-extras">
+                <span class="b-extra-btn">☆</span>
+                <span class="b-extra-btn">⋮</span>
               </div>
             </div>
-        </section>
-          
-
-        <section id="education" class="section">
-            <h2>Education</h2>
-            <div class="timeline">
-                <div class="edu-box">
-                    <h3>University of Westminster</h3>
-                    <p>BSc (Hons) in Software Engineering (2023 - 2027)</p>
-                </div>
-                <div class="edu-box">
-                    <h3>University of Sri Jayewardenepura</h3>
-                    <p>BSc (Hons) in Applied Science (2024 - 2027)</p>
-                </div>
-                <div class="edu-box">
-                    <h3>G/Dharmashoka College</h3>
-                    <p>A-Level: Combined Maths (B), Chemistry (B), Physics (C)</p>
-                </div>
+            <div class="b-page">
+              <img src="project-newzealankanz.jpg" alt="NewZealankans Marketplace" />
+              <div class="b-overlay"></div>
             </div>
-        </section>
+          </div>
+          <div class="card-content">
+            <span class="project-tag">Full-stack marketplace</span>
+            <h3>NewZealankans Marketplace</h3>
+            <p>Classifieds platform built with React, TypeScript, NestJS, Prisma, and PostgreSQL, featuring JWT auth, ad moderation, uploads, search filters, admin tools, banners, and SEO sitemaps.</p>
+            <a href="https://github.com/Dashin-sanjana/New-Zealankanz-Frontend" target="_blank" rel="noreferrer" class="github-link">View on GitHub <span>→</span></a>
+          </div>
+        </article>
 
-       
-        <section id="certification" class="section">
-            <h2>Certifications</h2>
-            <ul class="certificate-list">
-                <li><strong>Python Programming Certificate</strong> - University of Moratuwa<br />
-                    Proficiency in backend development, data analysis, and automation.
-                </li>
-                <li><strong>Web Development Certificate</strong> - University of Moratuwa<br />
-                    Hands-on experience with HTML, CSS, JavaScript, and backend technologies.
-                </li>
-                <li><strong>English Language Certificate</strong> - Cambridge School<br />
-                    Focused on reading, writing, and communication skills.
-                </li>
-                <li><strong>AlgoXplore 1.0 Hackathon</strong> - NSBM Green University<br />
-                    Participated in CTF and algorithmic challenges as part of "The Sentinels".
-                </li>
-                <li><strong>Haxpedition Mini Hackathon 2024</strong> - IIT IEEE Branch<br />
-                    Gained hands-on experience with peers in an innovation-focused event.
-                </li>
-                <li><strong>Quora 2023 – Quiz Competition</strong> - University of Sri Jayewardenepura<br />
-                    Recognized for analytical problem-solving and performance.
-                </li>
-            </ul>
-        </section>
+        <!-- SL Guide — WEB — sky blue (featured) -->
+        <article class="project-card glass-card reveal reveal-delay-1" style="--ar:0;--ag:210;--ab:255">
+          <div class="browser-mockup">
+            <div class="b-tabbar">
+              <div class="b-tab">
+                <div class="b-favicon"></div>
+                <span class="b-tab-title">SL Guide — Explore Sri Lanka</span>
+                <span class="b-tab-close">×</span>
+              </div>
+              <span class="b-tab-new">+</span>
+            </div>
+            <div class="b-toolbar">
+              <div class="b-nav">
+                <span class="b-nav-btn dim">←</span>
+                <span class="b-nav-btn dim">→</span>
+                <span class="b-nav-btn">↻</span>
+              </div>
+              <div class="b-urlbar">
+                <span class="b-lock">🔒</span>
+                <span class="b-url-text">github.com/Dashin-sanjana/SL-GUIDE</span>
+              </div>
+              <div class="b-extras">
+                <span class="b-extra-btn">☆</span>
+                <span class="b-extra-btn">⋮</span>
+              </div>
+            </div>
+            <div class="b-page">
+              <img src="project-sl-guide.png" alt="SL Guide interface" />
+              <div class="b-overlay"></div>
+            </div>
+          </div>
+          <div class="card-content">
+            <span class="project-tag">Travel planning</span>
+            <h3>SL Guide</h3>
+            <p>Travel companion platform for exploring Sri Lanka, planning personalized tours, and moving smoothly through discovery and booking flows.</p>
+            <a href="https://github.com/Dashin-sanjana/SL-GUIDE" target="_blank" rel="noreferrer" class="github-link">View on GitHub <span>→</span></a>
+          </div>
+        </article>
 
-        <section id="experience" class="section">
-            <h2>Experience</h2>
-            <ul class="experience-list">
-                <li><strong>UI/UX Designer</strong><br />
-                    Designed and enhanced user interfaces for web and mobile applications.<br />
-                    Collaborated with developers to ensure design feasibility.<br />
-                    Improved user engagement through feedback-driven iterations.
-                </li>
-                <li><strong>Freelance Video Editor (2022 - Present)</strong><br />
-                    Edited promotional videos and social media content using Premiere Pro and After Effects.
-                </li>
-                <li><strong>Online Mathematics Tutor (2023 - Present)</strong><br />
-                    Tutored students in algebra, calculus, and geometry.<br />
-                    Created custom lesson plans and exercises to enhance learning.
-                </li>
-            </ul>
-        </section>
+        <!-- Fably — MOBILE — hot pink -->
+        <article class="project-card glass-card reveal reveal-delay-2" style="--ar:255;--ag:45;--ab:120">
+          <div class="phone-mockup">
+            <div class="phone-device">
+              <div class="ph-btn-mute"></div>
+              <div class="ph-btn-vol-up"></div>
+              <div class="ph-btn-vol-down"></div>
+              <div class="ph-btn-power"></div>
+              <div class="ph-screen">
+                <div class="ph-statusbar">
+                  <span class="ph-time-val" data-clock>9:41</span>
+                  <div class="ph-island"></div>
+                  <div class="ph-status-icons">
+                    <div class="ph-signal"><span></span><span></span><span></span><span></span></div>
+                    <div class="ph-wifi"></div>
+                    <div class="ph-battery"><div class="ph-battery-fill"></div></div>
+                  </div>
+                </div>
+                <div class="ph-content">
+                  <img src="project-fably.png" alt="Fably app" />
+                  <div class="ph-overlay"></div>
+                </div>
+                <div class="ph-homearea"><div class="ph-home-pill"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <span class="project-tag">AI fashion</span>
+            <h3>Fably</h3>
+            <p>AI-powered fashion app for outfit visualization, personalized styling, wardrobe planning, couple matching, and shopping integration.</p>
+            <a href="https://github.com/fablypro/Fably" target="_blank" rel="noreferrer" class="github-link">View on GitHub <span>→</span></a>
+          </div>
+        </article>
 
-        <section id="contact" class="section">
-            <h2>Contact Me</h2>
-            <form id="contact-form" action="https://formspree.io/f/mjkrrbek" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required />
-                <input type="email" name="email" placeholder="Your Email" required />
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-    </main>
+        <!-- E-Clothing — MOBILE — violet -->
+        <article class="project-card glass-card reveal reveal-delay-3" style="--ar:180;--ag:78;--ab:255">
+          <div class="phone-mockup">
+            <div class="phone-device">
+              <div class="ph-btn-mute"></div>
+              <div class="ph-btn-vol-up"></div>
+              <div class="ph-btn-vol-down"></div>
+              <div class="ph-btn-power"></div>
+              <div class="ph-screen">
+                <div class="ph-statusbar">
+                  <span class="ph-time-val" data-clock>9:41</span>
+                  <div class="ph-island"></div>
+                  <div class="ph-status-icons">
+                    <div class="ph-signal"><span></span><span></span><span></span><span></span></div>
+                    <div class="ph-wifi"></div>
+                    <div class="ph-battery"><div class="ph-battery-fill"></div></div>
+                  </div>
+                </div>
+                <div class="ph-content">
+                  <img src="project-e-clothing.png" alt="E-Clothing app" />
+                  <div class="ph-overlay"></div>
+                </div>
+                <div class="ph-homearea"><div class="ph-home-pill"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <span class="project-tag">Commerce</span>
+            <h3>E-Clothing</h3>
+            <p>Mobile commerce app with product browsing, filtering, secure checkout, order tracking, and personalized recommendations.</p>
+            <a href="https://github.com/Dashin-sanjana/E-clothing" target="_blank" rel="noreferrer" class="github-link">View on GitHub <span>→</span></a>
+          </div>
+        </article>
 
-    <footer>
-        <p>&copy; 2025 Dashin Sanjana | All Rights Reserved</p>
-    </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const observerOptions = {
-            threshold: 0.1
-          };
-      
-          const observer = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                const animationClass = entry.target.dataset.animate || 'animate';
-                entry.target.classList.add(animationClass);
-                obs.unobserve(entry.target);
-              }
-            });
-          }, observerOptions);
-      
-          const targets = document.querySelectorAll('.section, .project-card, .edu-box, .tech-skill');
-          
-          targets.forEach(el => observer.observe(el));
-        });
-      </script>
+        <!-- Plane Management — WEB — electric blue -->
+        <article class="project-card glass-card reveal reveal-delay-3" style="--ar:68;--ag:136;--ab:255">
+          <div class="browser-mockup">
+            <div class="b-tabbar">
+              <div class="b-tab">
+                <div class="b-favicon"></div>
+                <span class="b-tab-title">Plane Management System</span>
+                <span class="b-tab-close">×</span>
+              </div>
+              <span class="b-tab-new">+</span>
+            </div>
+            <div class="b-toolbar">
+              <div class="b-nav">
+                <span class="b-nav-btn">←</span>
+                <span class="b-nav-btn dim">→</span>
+                <span class="b-nav-btn">↻</span>
+              </div>
+              <div class="b-urlbar">
+                <span class="b-lock">🔒</span>
+                <span class="b-url-text">github.com/Dashin-sanjana/Plane-ticket-management</span>
+              </div>
+              <div class="b-extras">
+                <span class="b-extra-btn">☆</span>
+                <span class="b-extra-btn">⋮</span>
+              </div>
+            </div>
+            <div class="b-page">
+              <img src="project-plane-management.png" alt="Plane management system" />
+              <div class="b-overlay"></div>
+            </div>
+          </div>
+          <div class="card-content">
+            <span class="project-tag">Operations</span>
+            <h3>Plane Management System</h3>
+            <p>Airline operations system for flight timetables, crew rostering, ticket management, and aircraft maintenance records.</p>
+            <a href="https://github.com/Dashin-sanjana/Plane-ticket-management" target="_blank" rel="noreferrer" class="github-link">View on GitHub <span>→</span></a>
+          </div>
+        </article>
+
+        <!-- Grade System — WEB — amber -->
+        <article class="project-card glass-card reveal reveal-delay-4" style="--ar:255;--ag:154;--ab:60">
+          <div class="browser-mockup">
+            <div class="b-tabbar">
+              <div class="b-tab">
+                <div class="b-favicon"></div>
+                <span class="b-tab-title">Student Exam Grade System</span>
+                <span class="b-tab-close">×</span>
+              </div>
+              <span class="b-tab-new">+</span>
+            </div>
+            <div class="b-toolbar">
+              <div class="b-nav">
+                <span class="b-nav-btn">←</span>
+                <span class="b-nav-btn dim">→</span>
+                <span class="b-nav-btn">↻</span>
+              </div>
+              <div class="b-urlbar">
+                <span class="b-lock">🔒</span>
+                <span class="b-url-text">github.com/Dashin-sanjana/Ticketing-System</span>
+              </div>
+              <div class="b-extras">
+                <span class="b-extra-btn">☆</span>
+                <span class="b-extra-btn">⋮</span>
+              </div>
+            </div>
+            <div class="b-page">
+              <img src="project-grade-system.png" alt="Grade system" />
+              <div class="b-overlay"></div>
+            </div>
+          </div>
+          <div class="card-content">
+            <span class="project-tag">Education</span>
+            <h3>Student Exam Grade System</h3>
+            <p>Academic records system for entering, calculating, and managing student exam results with cleaner data handling.</p>
+            <a href="https://github.com/Dashin-sanjana/Ticketing-System" target="_blank" rel="noreferrer" class="github-link">View on GitHub <span>→</span></a>
+          </div>
+        </article>
+
+        <!-- Life Below Water — WEB — teal -->
+        <article class="project-card glass-card reveal reveal-delay-5" style="--ar:0;--ag:215;--ab:175">
+          <div class="browser-mockup">
+            <div class="b-tabbar">
+              <div class="b-tab">
+                <div class="b-favicon"></div>
+                <span class="b-tab-title">Life Below Water — SDG 14</span>
+                <span class="b-tab-close">×</span>
+              </div>
+              <span class="b-tab-new">+</span>
+            </div>
+            <div class="b-toolbar">
+              <div class="b-nav">
+                <span class="b-nav-btn">←</span>
+                <span class="b-nav-btn dim">→</span>
+                <span class="b-nav-btn">↻</span>
+              </div>
+              <div class="b-urlbar">
+                <span class="b-lock">🔒</span>
+                <span class="b-url-text">life-below-water.dashin.dev</span>
+              </div>
+              <div class="b-extras">
+                <span class="b-extra-btn">★</span>
+                <span class="b-extra-btn">⋮</span>
+              </div>
+            </div>
+            <div class="b-page">
+              <img src="project-life-below-water.png" alt="Life Below Water" />
+              <div class="b-overlay"></div>
+            </div>
+          </div>
+          <div class="card-content">
+            <span class="project-tag">Awareness</span>
+            <h3>Life Below Water</h3>
+            <p>Educational website raising awareness about marine conservation through clear navigation, visual storytelling, and SDG 14 content.</p>
+            <a href="#" class="github-link">View details <span>→</span></a>
+          </div>
+        </article>
+
+        <!-- UI/UX — DESIGN — gold -->
+        <article class="project-card glass-card reveal reveal-delay-6" style="--ar:255;--ag:200;--ab:0">
+          <div class="browser-mockup">
+            <div class="b-tabbar">
+              <div class="b-tab">
+                <div class="b-favicon"></div>
+                <span class="b-tab-title">UI/UX Designs — Figma</span>
+                <span class="b-tab-close">×</span>
+              </div>
+              <span class="b-tab-new">+</span>
+            </div>
+            <div class="b-toolbar">
+              <div class="b-nav">
+                <span class="b-nav-btn">←</span>
+                <span class="b-nav-btn dim">→</span>
+                <span class="b-nav-btn">↻</span>
+              </div>
+              <div class="b-urlbar">
+                <span class="b-lock">🔒</span>
+                <span class="b-url-text">figma.com/@dashin-sanjana</span>
+              </div>
+              <div class="b-extras">
+                <span class="b-extra-btn">☆</span>
+                <span class="b-extra-btn">⋮</span>
+              </div>
+            </div>
+            <div class="b-page">
+              <img src="project-ui-ux.png" alt="UI UX designs" />
+              <div class="b-overlay"></div>
+            </div>
+          </div>
+          <div class="card-content">
+            <span class="project-tag">Product design</span>
+            <h3>UI/UX Designs</h3>
+            <p>Interface concepts for web and mobile products, covering user flows, wireframes, visual screens, and interaction details.</p>
+            <a href="#" class="github-link">View details <span>→</span></a>
+          </div>
+        </article>
+
+        <!-- Expense Tracker — WEB — green -->
+        <article class="project-card glass-card reveal reveal-delay-7" style="--ar:0;--ag:230;--ab:115">
+          <div class="browser-mockup">
+            <div class="b-tabbar">
+              <div class="b-tab">
+                <div class="b-favicon"></div>
+                <span class="b-tab-title">Expense Tracker App</span>
+                <span class="b-tab-close">×</span>
+              </div>
+              <span class="b-tab-new">+</span>
+            </div>
+            <div class="b-toolbar">
+              <div class="b-nav">
+                <span class="b-nav-btn">←</span>
+                <span class="b-nav-btn dim">→</span>
+                <span class="b-nav-btn">↻</span>
+              </div>
+              <div class="b-urlbar">
+                <span class="b-lock">🔒</span>
+                <span class="b-url-text">github.com/Dashin-sanjana/expense-tracker</span>
+              </div>
+              <div class="b-extras">
+                <span class="b-extra-btn">☆</span>
+                <span class="b-extra-btn">⋮</span>
+              </div>
+            </div>
+            <div class="b-page">
+              <img src="project-expense-tracker.png" alt="Expense tracker" />
+              <div class="b-overlay"></div>
+            </div>
+          </div>
+          <div class="card-content">
+            <span class="project-tag">Finance</span>
+            <h3>Expense Tracker</h3>
+            <p>Personal finance dashboard with authentication, income and expense tracking, filtering, and Chart.js visual summaries.</p>
+            <a href="https://github.com/Dashin-sanjana/expense-tracker" target="_blank" rel="noreferrer" class="github-link">View on GitHub <span>→</span></a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <p class="section-label reveal"><span class="glow">03</span> / Capabilities</p>
+      <div class="section-heading reveal"><h2>Tools I use to<br><span class="gradient-text">build products</span>.</h2></div>
+      <div class="skills-container">
+        <div class="skill-group glass-card reveal reveal-delay-1" style="--ar:0;--ag:245;--ab:255">
+          <h3>Languages</h3>
+          <div class="skill-badges">
+            <span data-tooltip="OOP and backend"><i class="devicon-java-plain colored"></i> Java</span>
+            <span data-tooltip="Data science and scripting"><i class="devicon-python-plain colored"></i> Python</span>
+            <span data-tooltip="Web interactivity"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+            <span data-tooltip="Cross-platform"><i class="devicon-dart-plain colored"></i> Dart</span>
+            <span data-tooltip="Low-level coding"><i class="devicon-c-plain colored"></i> C/C++</span>
+            <span data-tooltip="Database queries"><i class="devicon-mysql-plain colored"></i> SQL</span>
+          </div>
+        </div>
+        <div class="skill-group glass-card reveal reveal-delay-2" style="--ar:68;--ag:136;--ab:255">
+          <h3>Web Dev</h3>
+          <div class="skill-badges">
+            <span data-tooltip="Page structure"><i class="devicon-html5-plain colored"></i> HTML</span>
+            <span data-tooltip="Styling"><i class="devicon-css3-plain colored"></i> CSS</span>
+            <span data-tooltip="Responsive design"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+            <span data-tooltip="Component UI"><i class="devicon-react-original colored"></i> React.js</span>
+            <span data-tooltip="JS backend"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+            <span data-tooltip="Minimalist framework"><i class="devicon-express-original"></i> Express.js</span>
+            <span data-tooltip="API communication">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-group glass-card reveal reveal-delay-3" style="--ar:180;--ag:78;--ab:255">
+          <h3>Mobile</h3>
+          <div class="skill-badges">
+            <span data-tooltip="Cross-platform UI"><i class="devicon-flutter-plain colored"></i> Flutter</span>
+            <span data-tooltip="Native Android"><i class="devicon-android-plain colored"></i> Android</span>
+            <span data-tooltip="Native iOS"><i class="devicon-swift-plain colored"></i> iOS (Swift)</span>
+          </div>
+        </div>
+        <div class="skill-group glass-card reveal reveal-delay-4" style="--ar:255;--ag:45;--ab:120">
+          <h3>Backend &amp; Databases</h3>
+          <div class="skill-badges">
+            <span data-tooltip="Python microframework"><i class="devicon-flask-original"></i> Flask</span>
+            <span data-tooltip="Realtime NoSQL"><i class="devicon-firebase-plain colored"></i> Firebase</span>
+            <span data-tooltip="NoSQL document DB"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+            <span data-tooltip="Relational DBMS"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+            <span data-tooltip="Advanced RDBMS"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+            <span data-tooltip="Lightweight DB"><i class="devicon-sqlite-plain colored"></i> SQLite</span>
+          </div>
+        </div>
+        <div class="skill-group glass-card reveal reveal-delay-5" style="--ar:255;--ag:200;--ab:0">
+          <h3>AI / ML</h3>
+          <div class="skill-badges">
+            <span data-tooltip="Computer vision"><i class="devicon-opencv-plain colored"></i> OpenCV</span>
+            <span data-tooltip="Deep learning"><i class="devicon-tensorflow-original colored"></i> TensorFlow</span>
+            <span data-tooltip="Deep learning APIs"><i class="devicon-keras-plain colored"></i> Keras</span>
+            <span data-tooltip="ML algorithms"><i class="devicon-scikitlearn-plain colored"></i> scikit-learn</span>
+            <span data-tooltip="Object detection">YOLOv5</span>
+            <span data-tooltip="Pose and hand tracking">Mediapipe</span>
+          </div>
+        </div>
+        <div class="skill-group glass-card reveal reveal-delay-6" style="--ar:0;--ag:215;--ab:175">
+          <h3>Tools &amp; Platforms</h3>
+          <div class="skill-badges">
+            <span data-tooltip="Version control"><i class="devicon-git-plain colored"></i> Git</span>
+            <span data-tooltip="Remote repos"><i class="devicon-github-original"></i> GitHub</span>
+            <span data-tooltip="Code editor"><i class="devicon-vscode-plain colored"></i> VS Code</span>
+            <span data-tooltip="API testing"><i class="devicon-postman-plain colored"></i> Postman</span>
+            <span data-tooltip="UI design"><i class="devicon-figma-plain colored"></i> Figma</span>
+            <span data-tooltip="Open-source OS"><i class="devicon-linux-plain"></i> Linux</span>
+            <span data-tooltip="Containerization"><i class="devicon-docker-plain colored"></i> Docker</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certification" class="section">
+      <p class="section-label reveal"><span class="glow">04</span> / Certifications</p>
+      <div class="section-heading reveal"><h2>Signals of <span class="gradient-text">curiosity</span>.</h2></div>
+      <div class="cert-grid">
+        <div class="cert-card glass-card reveal reveal-delay-1" style="--ar:0;--ag:245;--ab:255"><strong>Artificial Intelligence Foundations: Machine Learning</strong><p class="cert-issuer">LinkedIn Learning</p><p>Skills: Machine Learning, Artificial Intelligence (AI)</p></div>
+        <div class="cert-card glass-card reveal reveal-delay-2" style="--ar:68;--ag:136;--ab:255"><strong>Introduction to Web APIs</strong><p class="cert-issuer">LinkedIn Learning</p><p>Skills: API Development, Application Programming Interfaces (API)</p></div>
+        <div class="cert-card glass-card reveal reveal-delay-3" style="--ar:180;--ag:78;--ab:255"><strong>Learning SQL Programming</strong><p class="cert-issuer">LinkedIn Learning</p><p>Skills: SQL</p></div>
+        <div class="cert-card glass-card reveal reveal-delay-4" style="--ar:255;--ag:154;--ab:60"><strong>Python Data Structures and Algorithms</strong><p class="cert-issuer">LinkedIn Learning</p><p>Skills: Data Structures, Python, Algorithms</p></div>
+        <div class="cert-card glass-card reveal reveal-delay-5" style="--ar:255;--ag:45;--ab:120"><strong>Python Programming Certificate</strong><p class="cert-issuer">University of Moratuwa</p><p>Proficiency in backend development, data analysis, and automation.</p></div>
+        <div class="cert-card glass-card reveal reveal-delay-6" style="--ar:0;--ag:215;--ab:175"><strong>Web Development Certificate</strong><p class="cert-issuer">University of Moratuwa</p><p>Hands-on experience with HTML, CSS, JavaScript, and backend technologies.</p></div>
+        <div class="cert-card glass-card reveal reveal-delay-1" style="--ar:0;--ag:245;--ab:255"><strong>English Language Certificate</strong><p class="cert-issuer">Cambridge School</p><p>Focused on reading, writing, and communication skills.</p></div>
+        <div class="cert-card glass-card reveal reveal-delay-2" style="--ar:68;--ag:136;--ab:255"><strong>AlgoXplore 1.0 Hackathon</strong><p class="cert-issuer">NSBM Green University</p><p>CTF and algorithmic challenges as part of "The Sentinels".</p></div>
+        <div class="cert-card glass-card reveal reveal-delay-3" style="--ar:180;--ag:78;--ab:255"><strong>Haxpedition Mini Hackathon 2024</strong><p class="cert-issuer">IIT IEEE Branch</p><p>Hands-on innovation-focused event with peers.</p></div>
+        <div class="cert-card glass-card reveal reveal-delay-4" style="--ar:255;--ag:154;--ab:60"><strong>Quora 2023 Quiz Competition</strong><p class="cert-issuer">University of Sri Jayewardenepura</p><p>Recognized for analytical problem-solving and performance.</p></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <p class="section-label reveal"><span class="glow">05</span> / Experience</p>
+      <div class="section-heading reveal"><h2>Work across <span class="gradient-text">software, design &amp; teaching</span>.</h2></div>
+      <div class="experience-grid">
+        <div class="exp-card glass-card reveal reveal-delay-1" style="--ar:0;--ag:245;--ab:255">
+          <strong>Associate Software Engineer</strong>
+          <p class="exp-meta">Zentrode · 2026 — Present</p>
+          <ul>
+            <li>Build and improve production software with attention to practical features, clean interfaces, and reliable implementation.</li>
+            <li>Work across product requirements, UI details, debugging, and delivery with a collaborative engineering workflow.</li>
+          </ul>
+        </div>
+        <div class="exp-card glass-card reveal reveal-delay-2" style="--ar:68;--ag:136;--ab:255">
+          <strong>Software Engineering Intern</strong>
+          <p class="exp-meta">I O N Groups Pvt Ltd · 2025 — 2026</p>
+          <ul>
+            <li>Contributed to software development work in a professional engineering environment.</li>
+            <li>Strengthened full-stack development, implementation discipline, collaboration, and delivery practices.</li>
+          </ul>
+        </div>
+        <div class="exp-card glass-card reveal reveal-delay-3" style="--ar:0;--ag:215;--ab:175">
+          <strong>UI/UX Designer</strong>
+          <p class="exp-meta">Present</p>
+          <ul>
+            <li>Designed and refined web and mobile interfaces with a focus on usability and visual consistency.</li>
+            <li>Collaborated with developers to keep designs practical, consistent, and technically feasible.</li>
+          </ul>
+        </div>
+        <div class="exp-card glass-card reveal reveal-delay-4" style="--ar:255;--ag:45;--ab:120">
+          <strong>Freelance Video Editor</strong>
+          <p class="exp-meta">2022 — Present</p>
+          <ul>
+            <li>Edited promotional videos, event highlights, and social media content for clients.</li>
+            <li>Used Premiere Pro and After Effects to produce polished, platform-ready visual content.</li>
+          </ul>
+        </div>
+        <div class="exp-card glass-card reveal reveal-delay-5" style="--ar:180;--ag:78;--ab:255">
+          <strong>Online Mathematics Tutor</strong>
+          <p class="exp-meta">2023 — Present</p>
+          <ul>
+            <li>Tutored students in algebra, calculus, and geometry through personalized online sessions.</li>
+            <li>Created lesson plans and practice exercises to support clearer understanding and steady progress.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <p class="section-label reveal"><span class="glow">06</span> / Education</p>
+      <div class="section-heading reveal"><h2>Academic <span class="gradient-text">foundation</span>.</h2></div>
+      <div class="timeline">
+        <div class="timeline-item reveal reveal-delay-1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-card" style="--ar:0;--ag:245;--ab:255">
+            <h3>University of Westminster</h3><p class="timeline-period">2023 — 2027</p><p>BSc (Hons) in Software Engineering</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal reveal-delay-2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-card" style="--ar:180;--ag:78;--ab:255">
+            <h3>University of Sri Jayewardenepura</h3><p class="timeline-period">2024 — 2027</p><p>BSc (Hons) in Applied Science</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal reveal-delay-3">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-card" style="--ar:0;--ag:215;--ab:175">
+            <h3>G/Dharmashoka College</h3><p class="timeline-period">Advanced Level - 2022</p><p>Combined Mathematics (B), Chemistry (B), Physics (C)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact-section">
+      <div class="reveal">
+        <p class="section-label"><span class="glow">07</span> / Contact</p>
+        <h2>Let's build something <span class="gradient-text">useful</span>.</h2>
+        <p class="section-lede" style="margin-top:16px;max-width:480px">Open to software engineering internships, freelance web or mobile work, and collaborative product ideas.</p>
+        <div class="contact-links">
+          <a href="mailto:dashinsanjana@gmail.com">dashinsanjana@gmail.com</a>
+          <a href="tel:+94763568325">+94 76 356 8325</a>
+          <a href="https://github.com/Dashin-sanjana" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/dashinsanjana-kaluarachchi" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+      <form id="contact-form" action="mailto:dashinsanjana@gmail.com" method="POST" enctype="text/plain" class="reveal reveal-delay-2">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Dashin Sanjana. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/dashinsanjana-kaluarachchi" target="_blank" rel="noreferrer" class="social-link" aria-label="LinkedIn">in</a>
+      <a href="https://github.com/Dashin-sanjana" target="_blank" rel="noreferrer" class="social-link" aria-label="GitHub">GH</a>
+      <a href="mailto:dashinsanjana@gmail.com" class="social-link" aria-label="Email">@</a>
+    </div>
+  </footer>
+
+  <script>
+  (() => {
+    /* Progress bar */
+    const bar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const d = document.documentElement;
+      bar.style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%';
+    }, { passive: true });
+
+    /* Custom cursor */
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let dx = 0, dy = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      dx = e.clientX; dy = e.clientY;
+      dot.style.left = dx + 'px'; dot.style.top = dy + 'px';
+    });
+    (function animRing() {
+      rx += (dx - rx) * 0.12; ry += (dy - ry) * 0.12;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(animRing);
+    })();
+    document.querySelectorAll('a,button,.tag,.skill-badges span').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    /* Live phone clocks */
+    const updateClocks = () => {
+      const t = new Date();
+      const str = String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0');
+      document.querySelectorAll('[data-clock]').forEach(el => el.textContent = str);
+    };
+    updateClocks();
+    setInterval(updateClocks, 30000);
+
+    /* Typing animation */
+    const roles = ['Full-stack developer','Mobile app developer','UI/UX designer','AI/ML enthusiast'];
+    const el = document.querySelector('.typed-text');
+    let ri = 0, ci = 0, del = false;
+    const type = () => {
+      const cur = roles[ri];
+      el.textContent = del ? cur.substring(0, --ci) : cur.substring(0, ++ci);
+      if (!del && ci === cur.length) { setTimeout(() => { del = true; }, 2200); setTimeout(type, 2300); }
+      else if (del && ci === 0) { del = false; ri = (ri + 1) % roles.length; setTimeout(type, 280); }
+      else { setTimeout(type, del ? 52 : 98); }
+    };
+    setTimeout(type, 800);
+
+    /* Nav toggle */
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => { const o = nav.classList.toggle('active'); toggle.setAttribute('aria-expanded', String(o)); });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('active'); toggle.setAttribute('aria-expanded','false'); }));
+
+    /* Scroll reveal */
+    const ro = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+    /* 3D tilt + spotlight */
+    document.querySelectorAll('.glass-card').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--tilt-x', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+        card.style.setProperty('--tilt-y', ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+        card.style.setProperty('--spot-x', ((e.clientX - r.left) / r.width * 100).toFixed(1));
+        card.style.setProperty('--spot-y', ((e.clientY - r.top) / r.height * 100).toFixed(1));
+      });
+      card.addEventListener('pointerleave', () => {
+        ['--tilt-x','--tilt-y'].forEach(p => card.style.setProperty(p,'0'));
+        ['--spot-x','--spot-y'].forEach(p => card.style.setProperty(p,'50'));
+      });
+    });
+
+    /* Stat counter */
+    const co = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target, target = parseInt(el.textContent), suf = el.textContent.replace(/\d/g,'');
+        let cur = 0; const step = Math.ceil(target / 30);
+        const tick = () => { cur = Math.min(cur + step, target); el.textContent = cur + suf; if (cur < target) requestAnimationFrame(tick); };
+        tick(); co.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-num').forEach(el => co.observe(el));
+  })();
+  </script>
 </body>
 </html>
