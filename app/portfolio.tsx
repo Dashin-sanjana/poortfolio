@@ -13,7 +13,7 @@ type Project = {
   image?: string;
   imageAlt?: string;
   imageFit?: "contain" | "cover";
-  visual?: "calculator" | "swiftdata" | "velora" | "bridge" | "bearing" | "marketplace";
+  visual?: "calculator" | "swiftdata" | "velora" | "bridge" | "bearing" | "marketplace" | "travel" | "fashion" | "clothing" | "airline" | "grades" | "ocean" | "design" | "finance";
   href?: string;
   linkLabel?: string;
   tags: string[];
@@ -81,17 +81,14 @@ const projects: Project[] = [
     name: "SL Guide",
     type: "Travel planning",
     description: "A responsive web app for exploring Sri Lanka’s places and culture, with personalized trip planning and booking flows.",
-    image: "/assets/sl_guide_preview.png",
-    imageAlt: "SL Guide portfolio project preview",
+    visual: "travel",
     tags: ["Web app", "Travel"],
   },
   {
     name: "Fably",
     type: "Fashion mobile app",
     description: "AI-assisted fashion app concept for outfit visualizations, personal styling, wardrobe planning, and shopping.",
-    image: "/assets/clothes_11605848-removebg-preview.png",
-    imageFit: "contain",
-    imageAlt: "Fashion illustration for the Fably project",
+    visual: "fashion",
     href: "https://fably.pro",
     linkLabel: "Visit website",
     tags: ["Mobile", "Fashion"],
@@ -100,53 +97,42 @@ const projects: Project[] = [
     name: "E-Clothing",
     type: "Mobile commerce app",
     description: "Mobile commerce project for browsing products, filtering, purchases, order tracking, and recommendations.",
-    image: "/assets/E%20Clothing.png",
-    imageAlt: "E-Clothing project image",
+    visual: "clothing",
     tags: ["Mobile", "Commerce"],
   },
   {
     name: "Plane Management System",
     type: "Management system",
     description: "A system for managing flight timetables, crew rostering, and aircraft maintenance.",
-    image: "/assets/airline_12315171-removebg-preview.png",
-    imageFit: "contain",
-    imageAlt: "Airplane icon for the Plane Management System",
+    visual: "airline",
     tags: ["Java", "Systems"],
   },
   {
     name: "Student Exam Grade System",
     type: "Education system",
     description: "A platform concept for managing student grades securely and efficiently.",
-    image: "/assets/achievement_11300864-removebg-preview.png",
-    imageFit: "contain",
-    imageAlt: "Achievement icon for the Student Exam Grade System",
+    visual: "grades",
     tags: ["Education", "Application"],
   },
   {
     name: "Life Below Water",
     type: "Awareness website",
     description: "An educational website about marine conservation and United Nations Sustainable Development Goal 14.",
-    image: "/assets/tide_3408448-removebg-preview.png",
-    imageFit: "contain",
-    imageAlt: "Ocean themed illustration for Life Below Water",
+    visual: "ocean",
     tags: ["Web design", "SDG 14"],
   },
   {
     name: "UI/UX Designs",
     type: "Interface design",
     description: "User interface concepts for web and mobile products, including user flows, wireframes, and visual screens.",
-    image: "/assets/website_14654068-removebg-preview.png",
-    imageFit: "contain",
-    imageAlt: "Website design icon",
+    visual: "design",
     tags: ["UI/UX", "Design"],
   },
   {
     name: "Personal Expense Tracker",
     type: "Finance web app",
     description: "A responsive income and expense tracker with authentication, live financial records, date and category filters, and Chart.js visualizations.",
-    image: "/assets/expense%20tracker.png",
-    imageFit: "cover",
-    imageAlt: "Illustration representing the Personal Expense Tracker",
+    visual: "finance",
     tags: ["Web app", "Finance"],
   },
 ];
@@ -177,49 +163,13 @@ const storyScenes = [
 ];
 
 function ScrollBackdrop() {
-  const currentFrameRef = useRef<HTMLDivElement>(null);
-  const nextFrameRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const currentFrame = currentFrameRef.current;
-    const nextFrame = nextFrameRef.current;
-    if (!currentFrame || !nextFrame) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-    const positions = Array.from({ length: 8 }, (_, index) => `${((index % 4) / 3) * 100}% ${Math.floor(index / 4) * 100}%`);
-    const updateFrame = (progress: number) => {
-      const frameProgress = Math.min(7, Math.max(0, progress * 7));
-      const frameIndex = Math.floor(frameProgress);
-      const nextIndex = Math.min(frameIndex + 1, 7);
-      currentFrame.style.backgroundPosition = positions[frameIndex];
-      nextFrame.style.backgroundPosition = positions[nextIndex];
-      nextFrame.style.opacity = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "0" : String(frameProgress - frameIndex);
-    };
-
-    const context = gsap.context(() => {
-      updateFrame(0);
-      ScrollTrigger.create({
-        trigger: document.documentElement,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 0.45,
-        invalidateOnRefresh: true,
-        onUpdate: (trigger) => updateFrame(trigger.progress),
-        onRefresh: (trigger) => updateFrame(trigger.progress),
-      });
-    });
-    const refresh = window.requestAnimationFrame(() => ScrollTrigger.refresh());
-    return () => {
-      window.cancelAnimationFrame(refresh);
-      context.revert();
-    };
-  }, []);
-
   return (
     <div className="portfolio-scroll-backdrop" aria-hidden="true">
-      <div className="portfolio-backdrop-frame">
-        <div className="portfolio-backdrop-panel" ref={currentFrameRef} />
-        <div className="portfolio-backdrop-panel portfolio-backdrop-next" ref={nextFrameRef} />
+      <div className="portfolio-character-wrap">
+        <span className="ambient-orbit ambient-orbit-one" />
+        <span className="ambient-orbit ambient-orbit-two" />
+        <span className="ambient-orbit ambient-orbit-three" />
+        <img className="portfolio-character" src="/assets/dashin-cinematic-developer.png" alt="" fetchPriority="high" />
       </div>
     </div>
   );
@@ -446,8 +396,57 @@ function ProjectArtwork({ kind }: { kind: NonNullable<Project["visual"]> }) {
           <rect x="52" y="159" width="197" height="32" rx="16" className="art-row" /><circle cx="69" cy="175" r="6" className="art-dot" /><rect x="84" y="172" width="105" height="5" rx="3" className="art-dim-line" />
           {[0, 1, 2].map((n) => <g key={n}><rect x={286 + n * 86} y={76 + (n % 2) * 12} width="76" height="190" rx="12" className="art-panel" /><rect x={296 + n * 86} y={88 + (n % 2) * 12} width="56" height="99" rx="8" className={`art-listing listing-${n}`} /><rect x={297 + n * 86} y={200 + (n % 2) * 12} width="42" height="5" rx="3" className="art-line" /><rect x={297 + n * 86} y={214 + (n % 2) * 12} width="30" height="4" rx="2" className="art-dim-line" /><text x={297 + n * 86} y={250 + (n % 2) * 12} className="art-price">LKR ···</text></g>)}
         </>}
+        {kind === "travel" && <>
+          <rect x="40" y="38" width="520" height="254" rx="16" className="art-panel" /><path d="M40 78h520" className="art-rule" />
+          <text x="64" y="64" className="art-eyebrow">SL GUIDE · YOUR ISLAND, YOUR WAY</text><text x="64" y="117" className="art-title">Find a place to wander</text>
+          <rect x="64" y="136" width="282" height="129" rx="10" className="art-map" />
+          <path d="M77 232c34-44 44-5 72-54s45 18 70-19 39 13 112-8M85 154c18 25 43 19 54 63s45 12 62 38 46-7 74 7" className="art-route" />
+          {[0, 1, 2].map((n) => <circle key={n} cx={126 + n * 73} cy={193 - (n % 2) * 30} r="6" className="art-map-pin" />)}
+          <rect x="365" y="137" width="168" height="57" rx="9" className="art-row" /><rect x="378" y="149" width="42" height="34" rx="6" className="art-destination dest-one" /><text x="430" y="159" className="art-muted">ELLA · HIGHLANDS</text><rect x="430" y="169" width="78" height="5" rx="3" className="art-dim-line" />
+          <rect x="365" y="207" width="168" height="57" rx="9" className="art-row" /><rect x="378" y="219" width="42" height="34" rx="6" className="art-destination dest-two" /><text x="430" y="229" className="art-muted">SOUTH COAST</text><rect x="430" y="239" width="62" height="5" rx="3" className="art-dim-line" />
+        </>}
+        {kind === "fashion" && <>
+          <text x="48" y="63" className="art-eyebrow">FABLY · YOUR STYLE, YOUR WAY</text><text x="48" y="101" className="art-title">Outfit studio</text>
+          <rect x="48" y="119" width="252" height="183" rx="14" className="art-panel" /><rect x="61" y="132" width="104" height="156" rx="9" className="art-fashion-card fashion-one" /><rect x="176" y="132" width="111" height="156" rx="9" className="art-fashion-card fashion-two" />
+          <path d="M92 174l19-15 14 7 14-7 18 15-12 18-10-6v58h-31v-58l-10 6z" className="art-garment garment-one" /><path d="M199 171l18-13 15 8 15-8 19 13-8 22-12-6v55h-37v-55l-12 6z" className="art-garment garment-two" />
+          <rect x="73" y="263" width="80" height="5" rx="3" className="art-dim-line" /><rect x="189" y="263" width="77" height="5" rx="3" className="art-dim-line" />
+          <rect x="339" y="52" width="150" height="250" rx="25" className="art-phone" /><rect x="350" y="66" width="128" height="222" rx="17" className="art-screen" /><rect x="393" y="72" width="42" height="5" rx="3" className="art-notch" /><text x="365" y="103" className="art-eyebrow">TODAY'S LOOK</text><circle cx="414" cy="167" r="45" className="art-style-orbit" /><path d="M392 153l16-12 12 6 12-6 16 12-8 16-8-5v41h-28v-41l-8 5z" className="art-garment garment-three" /><rect x="372" y="230" width="83" height="7" rx="4" className="art-line" /><rect x="372" y="246" width="58" height="5" rx="3" className="art-dim-line" />
+        </>}
+        {kind === "clothing" && <>
+          <rect x="40" y="37" width="520" height="258" rx="16" className="art-panel" /><path d="M40 78h520" className="art-rule" /><text x="62" y="64" className="art-eyebrow">E-CLOTHING · NEW SEASON</text><rect x="402" y="49" width="128" height="20" rx="10" className="art-row" /><circle cx="513" cy="59" r="4" className="art-accent-fill" />
+          {[0, 1, 2].map((n) => <g key={n}><rect x={62 + n * 163} y="98" width="146" height="176" rx="10" className="art-row" /><rect x={73 + n * 163} y="108" width="124" height="103" rx="7" className={`art-product product-${n}`} /><path d={n === 0 ? `M${111+n*163} 133l17-10 12 5 12-5 18 10-8 16-8-4v42h-37v-42l-8 4z` : n === 1 ? `M${273+n*163} 128l16-8 13 5 13-5 17 8-6 21-9-4v46h-39v-46l-9 4z` : `M${436+n*163} 132l18-9 13 6 13-6 17 9-9 17-8-5v42h-37v-42l-8 5z`} className={`art-garment garment-shop-${n}`} />
+          <rect x={74+n*163} y="222" width="65" height="6" rx="3" className="art-line" /><rect x={74+n*163} y="237" width="47" height="5" rx="3" className="art-dim-line" /><circle cx={187+n*163} cy="237" r="8" className="art-button" /></g>)}
+        </>}
+        {kind === "airline" && <>
+          <text x="48" y="59" className="art-eyebrow">AIRLINE OPERATIONS · TODAY</text><text x="48" y="97" className="art-title">Flight control</text>
+          <rect x="48" y="116" width="318" height="178" rx="12" className="art-panel" /><text x="65" y="140" className="art-muted">FLIGHT</text><text x="150" y="140" className="art-muted">ROUTE</text><text x="265" y="140" className="art-muted">STATUS</text><path d="M62 151h288" className="art-rule" />
+          {[0, 1, 2].map((n) => <g key={n}><text x="65" y={177+n*37} className="art-flight">{`SK ${n+1}0${n+4}`}</text><text x="150" y={177+n*37} className="art-muted">{n===0?"CMB → SIN":n===1?"CMB → DXB":"CMB → MLE"}</text><rect x="266" y={162+n*37} width="70" height="21" rx="10" className={`art-flight-status status-${n}`} /><text x="275" y={177+n*37} className="art-status-label">{n===0?"ON TIME":n===1?"BOARDING":"SCHEDULED"}</text><path d={`M62 ${190+n*37}h288`} className="art-rule" /></g>)}
+          <rect x="391" y="116" width="160" height="178" rx="12" className="art-panel" /><circle cx="471" cy="198" r="52" className="art-flight-ring" /><path d="M471 156l10 35 28 15-2 9-29-6-7 35-8 0-1-35-28 7-2-9 27-16 4-35z" className="art-plane" /><text x="422" y="274" className="art-muted">FLEET OVERVIEW</text>
+        </>}
+        {kind === "grades" && <>
+          <text x="48" y="59" className="art-eyebrow">STUDENT PORTAL · TERM 02</text><text x="48" y="97" className="art-title">Results overview</text>
+          <rect x="48" y="116" width="337" height="180" rx="12" className="art-panel" /><text x="66" y="142" className="art-muted">SUBJECT</text><text x="259" y="142" className="art-muted">GRADE</text><text x="326" y="142" className="art-muted">SCORE</text><path d="M62 153h307" className="art-rule" />
+          {[0,1,2,3].map(n=><g key={n}><circle cx="77" cy={174+n*28} r="7" className={`art-subject-dot subject-${n}`} /><text x="94" y={178+n*28} className="art-flight">{["Mathematics","Computing","Science","English"][n]}</text><text x="270" y={178+n*28} className="art-grade">{["A","A−","B+","A"][n]}</text><rect x="326" y={168+n*28} width="42" height="7" rx="4" className="art-score-track" /><rect x="326" y={168+n*28} width={[38,33,28,36][n]} height="7" rx="4" className="art-score-fill" /><path d={`M62 ${190+n*28}h307`} className="art-rule" /></g>)}
+          <rect x="414" y="116" width="137" height="180" rx="12" className="art-panel" /><circle cx="482" cy="188" r="43" className="art-grade-ring" /><text x="461" y="195" className="art-grade-total">3.8</text><text x="446" y="260" className="art-muted">TERM GPA</text>
+        </>}
+        {kind === "ocean" && <>
+          <rect x="40" y="38" width="520" height="254" rx="16" className="art-ocean-panel" /><text x="64" y="70" className="art-ocean-kicker">LIFE BELOW WATER · SDG 14</text><text x="64" y="123" className="art-ocean-title">Protect what we</text><text x="64" y="159" className="art-ocean-title">can't replace.</text><rect x="64" y="182" width="112" height="27" rx="13" className="art-ocean-button" /><text x="80" y="200" className="art-ocean-button-label">EXPLORE THE OCEAN</text>
+          <path d="M40 225c49-27 70 22 119-1s69 17 120-3 78 20 127-3 86 14 154-8v82H40z" className="art-wave wave-one" /><path d="M40 251c51-21 72 15 125-2s74 18 126-1 84 13 132-4 88 18 137-3v51H40z" className="art-wave wave-two" /><path d="M384 151c17-20 35-22 53-10l17-5-11 14 11 12-19-4c-13 12-31 13-51 4l-14 5 5-11-8-9z" className="art-turtle" /><circle cx="447" cy="149" r="2" className="art-ocean-eye" />
+        </>}
+        {kind === "design" && <>
+          <text x="48" y="59" className="art-eyebrow">DESIGN WORKSPACE · WEB + MOBILE</text><text x="48" y="97" className="art-title">Ideas into interfaces</text>
+          <rect x="48" y="116" width="504" height="178" rx="12" className="art-panel" /><rect x="48" y="116" width="82" height="178" rx="12" className="art-sidebar" /><circle cx="70" cy="139" r="7" className="art-design-dot" /><rect x="86" y="136" width="31" height="5" rx="3" className="art-dim-line" />{[0,1,2,3].map(n=><g key={n}><rect x="63" y={163+n*25} width="12" height="12" rx="3" className={`art-tool tool-${n}`} /><rect x="83" y={167+n*25} width="33" height="4" rx="2" className="art-dim-line" /></g>)}
+          <rect x="151" y="134" width="189" height="143" rx="9" className="art-design-canvas" /><rect x="164" y="147" width="163" height="75" rx="6" className="art-design-hero" /><rect x="176" y="162" width="72" height="5" rx="3" className="art-design-line" /><rect x="176" y="174" width="54" height="4" rx="2" className="art-design-dim" /><rect x="176" y="190" width="49" height="15" rx="7" className="art-design-button" /><rect x="164" y="232" width="74" height="32" rx="5" className="art-design-tile" /><rect x="253" y="232" width="74" height="32" rx="5" className="art-design-tile" />
+          <rect x="371" y="128" width="89" height="154" rx="16" className="art-phone" /><rect x="379" y="140" width="73" height="130" rx="11" className="art-screen" /><rect x="396" y="145" width="39" height="4" rx="2" className="art-notch" /><rect x="388" y="163" width="55" height="36" rx="5" className="art-design-hero" /><rect x="388" y="207" width="37" height="4" rx="2" className="art-design-line" /><rect x="388" y="217" width="48" height="4" rx="2" className="art-design-dim" /><rect x="388" y="231" width="55" height="19" rx="8" className="art-design-button" />
+          <rect x="477" y="150" width="54" height="12" rx="6" className="art-color-swatch swatch-one" /><rect x="477" y="170" width="54" height="12" rx="6" className="art-color-swatch swatch-two" /><rect x="477" y="190" width="54" height="12" rx="6" className="art-color-swatch swatch-three" />
+        </>}
+        {kind === "finance" && <>
+          <text x="48" y="59" className="art-eyebrow">PERSONAL FINANCE · OVERVIEW</text><text x="48" y="97" className="art-title">Your money, in view</text>
+          <rect x="48" y="116" width="504" height="178" rx="12" className="art-panel" /><rect x="66" y="133" width="146" height="58" rx="9" className="art-row" /><text x="80" y="153" className="art-muted">TOTAL BALANCE</text><text x="80" y="178" className="art-finance-value">LKR 248,500</text><rect x="226" y="133" width="142" height="58" rx="9" className="art-row" /><text x="240" y="153" className="art-muted">INCOME THIS MONTH</text><text x="240" y="178" className="art-finance-value">LKR 85,000</text><rect x="382" y="133" width="152" height="58" rx="9" className="art-row" /><text x="396" y="153" className="art-muted">SPENT THIS MONTH</text><text x="396" y="178" className="art-finance-value">LKR 42,300</text>
+          <text x="67" y="215" className="art-muted">CASH FLOW</text><path d="M70 267h460M70 241h460M70 215h460" className="art-rule" />{[0,1,2,3,4,5,6,7,8].map(n=><rect key={n} x={84+n*49} y={239-[18,34,26,48,40,58,45,69,54][n]} width="25" height={[28,43,35,58,49,68,55,78,63][n]} rx="4" className={`art-finance-bar finance-${n%3}`} />)}
+        </>}
       </svg>
-      <span className="art-disclaimer">Illustrative project artwork</span>
+      <span className="art-disclaimer">Illustrative UI preview · not a product screenshot</span>
     </div>
   );
 }
@@ -465,7 +464,6 @@ export default function Portfolio() {
     }
     const context = gsap.context(() => {
       gsap.fromTo(".hero-copy > *", { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.11, ease: "power3.out", delay: 0.15 });
-      gsap.fromTo(".hero-portrait", { y: 24, opacity: 0, scale: 0.98 }, { y: 0, opacity: 1, scale: 1, duration: 1.1, ease: "power3.out", delay: 0.28 });
     });
     return () => context.revert();
   }, []);
@@ -543,18 +541,6 @@ export default function Portfolio() {
             <div className="hero-actions"><a href="#work" className="button button-dark">Explore my work <ArrowDownRight size={17} /></a><a href="mailto:dashinsanjana@gmail.com" className="text-link">Let’s talk <ArrowUpRight size={16} /></a></div>
             <div className="hero-footnote"><span>01 / 04</span><span>Swift · SwiftUI · SwiftData</span></div>
           </div>
-          <figure className="hero-portrait">
-            <div className="portrait-stage">
-              <span className="avatar-halo" aria-hidden="true" />
-              <img className="cartoon-avatar" src="/assets/dashin-sanjana-cartoon-avatar.png" alt="Stylized 3D cartoon illustration of Dashin" fetchPriority="high" />
-              <div className="portrait-frame">
-                <img src="/assets/dashin-sanjana-original.jpg" alt="Dashin Sanjana in his original, unedited photograph" />
-                <span className="photo-original-label">Original photo</span>
-              </div>
-              <span className="portrait-index">DS / 2026</span>
-            </div>
-            <figcaption><span>Dashin Sanjana</span><span>Software Engineer <i>↗</i></span></figcaption>
-          </figure>
           <a href="#work" className="scroll-cue" aria-label="Scroll to selected work"><ArrowDown size={16} /><span>Scroll to explore</span></a>
         </section>
 
