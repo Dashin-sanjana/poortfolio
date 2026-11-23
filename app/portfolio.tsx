@@ -6,6 +6,9 @@ import { ArrowDown, ArrowDownRight, ArrowUpRight, ArrowUp, Menu, X } from "lucid
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const publicAsset = (path: string) => `${publicBasePath}${path}`;
+
 type Project = {
   name: string;
   type: string;
@@ -146,7 +149,7 @@ const skills = [
 ];
 
 const certificates = [
-  ["Introduction to Swift", "Simplilearn SkillUp · Completed 21 November 2026", "Certificate holder: K.A Dashin Sanjana · Code: 11062017", "/assets/introduction-to-swift-certificate.pdf"],
+  ["Introduction to Swift", "Simplilearn SkillUp · Completed 21 November 2026", "Certificate holder: K.A Dashin Sanjana · Code: 11062017", publicAsset("/assets/introduction-to-swift-certificate.pdf")],
   ["Artificial Intelligence Foundations: Machine Learning", "LinkedIn Learning", ""],
   ["Introduction to Web APIs", "LinkedIn Learning", ""],
   ["Learning SQL Programming", "LinkedIn Learning", ""],
@@ -169,7 +172,7 @@ function ScrollBackdrop() {
         <span className="ambient-orbit ambient-orbit-one" />
         <span className="ambient-orbit ambient-orbit-two" />
         <span className="ambient-orbit ambient-orbit-three" />
-        <img className="portfolio-character" src="/assets/dashin-cinematic-developer.png" alt="" fetchPriority="high" />
+        <img className="portfolio-character" src={publicAsset("/assets/dashin-cinematic-developer.png")} alt="" fetchPriority="high" />
       </div>
     </div>
   );
@@ -527,7 +530,7 @@ export default function Portfolio() {
         <button className="menu-toggle" type="button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
         <nav className={menuOpen ? "main-nav open" : "main-nav"} aria-label="Main navigation">
           {[ ["Work", "work"], ["About", "about"], ["Experience", "experience"], ["Education", "education"], ["Contact", "contact"] ].map(([label, id]) => <a key={id} href={`#${id}`} onClick={closeMenu}>{label}</a>)}
-          <a className="nav-cta" href="/assets/Dashin%20sanjana%20updated%20cv.pdf.pdf" download onClick={closeMenu}>Download CV <ArrowUpRight size={14} /></a>
+          <a className="nav-cta" href={publicAsset("/assets/Dashin%20sanjana%20updated%20cv.pdf.pdf")} download onClick={closeMenu}>Download CV <ArrowUpRight size={14} /></a>
         </nav>
       </header>
 
@@ -602,7 +605,7 @@ export default function Portfolio() {
 
         <section id="contact" className="contact-section">
           <div className="section-kicker reveal"><span>07</span><span>Contact</span></div>
-          <div className="contact-main"><div className="reveal"><h2>Have a good<br /><em>problem to solve?</em></h2><p>I’m open to junior iOS opportunities, thoughtful collaborations, and conversations about building useful software.</p></div><div className="contact-links reveal"><a href="mailto:dashinsanjana@gmail.com">Email me <ArrowUpRight size={17} /></a><a href="https://github.com/Dashin-sanjana" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={17} /></a><a href="https://www.linkedin.com/in/dashinsanjana-kaluarachchi" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={17} /></a><a href="/assets/Dashin%20sanjana%20updated%20cv.pdf.pdf" download>Download my CV <ArrowUpRight size={17} /></a></div></div>
+          <div className="contact-main"><div className="reveal"><h2>Have a good<br /><em>problem to solve?</em></h2><p>I’m open to junior iOS opportunities, thoughtful collaborations, and conversations about building useful software.</p></div><div className="contact-links reveal"><a href="mailto:dashinsanjana@gmail.com">Email me <ArrowUpRight size={17} /></a><a href="https://github.com/Dashin-sanjana" target="_blank" rel="noreferrer">GitHub <ArrowUpRight size={17} /></a><a href="https://www.linkedin.com/in/dashinsanjana-kaluarachchi" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={17} /></a><a href={publicAsset("/assets/Dashin%20sanjana%20updated%20cv.pdf.pdf")} download>Download my CV <ArrowUpRight size={17} /></a></div></div>
           <div className="contact-bottom"><a className="wordmark" href="#top">D<span>.</span>S</a><span>© 2026 Dashin Sanjana</span><a href="#top">Back to top <ArrowUp size={14} /></a></div>
         </section>
       </main>
