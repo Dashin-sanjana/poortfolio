@@ -212,3 +212,20 @@ main{position:relative;z-index:1;background:transparent}
 @media(max-width:1000px){.hero-build-note{display:none}}
 @media(max-width:680px){.portfolio-scroll-backdrop::before{background:linear-gradient(90deg,rgba(7,7,7,.96) 0%,rgba(7,7,7,.82) 48%,rgba(7,7,7,.38) 78%,rgba(7,7,7,.2) 100%)}.portfolio-character-wrap{width:120vw;height:70svh;right:-30vw;top:25svh}.portfolio-character{opacity:.76;mask-image:radial-gradient(ellipse 79% 83% at 67% 55%,#000 46%,rgba(0,0,0,.82) 69%,transparent 100%)}.hero{min-height:calc(100svh - 64px);align-items:center;padding-top:66px;padding-bottom:84px}.hero-copy{max-width:560px}.hero h1{font-size:clamp(50px,13vw,78px);line-height:.9}.hero-lede{max-width:390px;color:#d1ccc6;font-size:14px}.hero-footnote{margin-top:48px}.button-dark{box-shadow:0 9px 28px rgba(255,112,43,.19)}}
 @media(prefers-reduced-motion:reduce){.hero-build-note,.build-note-signal i{animation:none!important}}
+
+/* Keep the cinematic backdrop present while giving reading surfaces solid contrast. */
+.section{background:rgba(9,9,9,.86)}
+.skills-section{background:rgba(12,12,12,.9)}
+.contact-section{background:rgba(12,12,12,.94);backdrop-filter:blur(12px)}
+.project-card{background:rgba(10,10,10,.96);backdrop-filter:blur(14px);border-color:rgba(255,255,255,.2)}
+.project-card-featured{background:rgba(18,14,12,.97);border-color:rgba(255,112,43,.56)}
+.project-topline{color:#d0c9c3;font-size:9px}
+.status-pill{border-color:rgba(255,142,91,.55);color:#ffc09e;font-size:8px}
+.project-body>p{color:#d4cec8;font-size:12px;line-height:1.7}
+.tags span,.skill-tags span{color:#e1dcd6;border-color:#5a524d}
+.skill-tags span{color:#eee8e2;border-color:#5f5751}
+.story-chapter{opacity:.84;border-color:rgba(255,255,255,.22);background:rgba(10,10,10,.92)}
+.story-chapter p{color:#d0c9c2;font-size:13px}
+.certificate-card,.learning-card{background:rgba(15,15,15,.95);border-color:rgba(255,255,255,.18)}
+.certificate-card p,.certificate-card small,.learning-card p{color:#d0c9c2}
+@media(max-width:680px){.section{background:rgba(9,9,9,.9)}.project-card{background:rgba(10,10,10,.97)}.project-topline{font-size:9px}.status-pill{font-size:8px}.project-body>p{font-size:13px}.story-chapter{opacity:.92}.story-chapter p{font-size:14px}}
