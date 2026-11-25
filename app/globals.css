@@ -229,3 +229,31 @@ main{position:relative;z-index:1;background:transparent}
 .certificate-card,.learning-card{background:rgba(15,15,15,.95);border-color:rgba(255,255,255,.18)}
 .certificate-card p,.certificate-card small,.learning-card p{color:#d0c9c2}
 @media(max-width:680px){.section{background:rgba(9,9,9,.9)}.project-card{background:rgba(10,10,10,.97)}.project-topline{font-size:9px}.status-pill{font-size:8px}.project-body>p{font-size:13px}.story-chapter{opacity:.92}.story-chapter p{font-size:14px}}
+
+/* Make experience, education, and certificate details read as distinct information blocks. */
+.section{background:rgba(8,8,8,.94)}
+.section-kicker{color:#d1cbc5;font-size:11px}
+.about-copy{color:#e0dbd5;font-size:16px}
+.about-meta{color:#e6d4c8;font-size:10px}
+.work-heading>p{color:#ded8d2;font-size:15px;line-height:1.8}
+.timeline{border:0;display:grid;gap:10px;margin-top:38px}
+.timeline-row{padding:20px 22px;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(14,14,14,.98);gap:18px}
+.timeline-date{color:#f0d1bf;font-size:11px}
+.timeline-row h3{color:#f7f4ef;font-size:22px}
+.timeline-row h3 span{color:#d5cdc5}
+.timeline-row p{color:#e0dbd5;font-size:14px;line-height:1.7}
+.timeline-mark{color:#ff9b70;font-size:11px}
+.secondary-experience{color:#e0dad4;font-size:13px}
+.secondary-experience>span{color:#ffad87;font-size:10px}
+.secondary-experience b{color:#bdb5ae;font-size:10px}
+.education-list{border:0;display:grid;gap:10px;margin-top:38px}
+.education-row{padding:17px 20px;border:1px solid rgba(255,255,255,.15);border-radius:12px;background:rgba(14,14,14,.98);gap:16px}
+.education-row>span{color:#f0d1bf;font-size:11px}
+.education-row h3{color:#f7f4ef;font-size:20px}
+.education-row p{color:#e0dbd5;font-size:14px;line-height:1.6}
+.certificate-card,.learning-card{background:rgba(14,14,14,.98);border-color:rgba(255,255,255,.16);padding:22px}
+.certificate-no{color:#ff9b70;font-size:11px}
+.certificate-card h3,.learning-card h3{color:#f7f4ef;font-size:18px}
+.certificate-card p,.certificate-card small,.learning-card p{color:#e0dbd5;font-size:13px;line-height:1.65}
+.certificate-card a,.learning-card a{color:#ffb18e;font-size:12px}
+@media(max-width:680px){.section{background:rgba(8,8,8,.96)}.section-kicker{font-size:10px}.about-copy{font-size:15px}.work-heading>p{font-size:14px}.timeline-row{grid-template-columns:1fr 28px;padding:18px 16px}.timeline-row h3{font-size:19px}.timeline-row p{font-size:14px}.secondary-experience{grid-template-columns:1fr;gap:10px}.secondary-experience p{padding:12px 14px;border:1px solid rgba(255,255,255,.15);border-radius:10px;background:rgba(14,14,14,.96)}.education-row{padding:16px}.education-row h3{font-size:18px}.education-row p{font-size:13px}.certificate-card,.learning-card{padding:18px}.certificate-card h3,.learning-card h3{font-size:16px}}
