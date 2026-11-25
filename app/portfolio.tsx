@@ -544,6 +544,12 @@ export default function Portfolio() {
             <div className="hero-actions"><a href="#work" className="button button-dark">Explore my work <ArrowDownRight size={17} /></a><a href="mailto:dashinsanjana@gmail.com" className="text-link">Let’s talk <ArrowUpRight size={16} /></a></div>
             <div className="hero-footnote"><span>01 / 04</span><span>Swift · SwiftUI · SwiftData</span></div>
           </div>
+          <aside className="hero-build-note" aria-hidden="true">
+            <div className="build-note-top"><span><i /> BUILD NOTE</span><span>001</span></div>
+            <div className="build-note-main"><span className="build-note-icon">S</span><span><strong>SwiftUI</strong><small>Native, intentional interfaces</small></span><ArrowUpRight size={15} /></div>
+            <div className="build-note-tags"><span>SwiftData</span><span>Motion</span><span>Care</span></div>
+            <div className="build-note-signal"><span>IN THE FLOW</span><i /><i /><i /><i /><i /><i /><i /></div>
+          </aside>
           <a href="#work" className="scroll-cue" aria-label="Scroll to selected work"><ArrowDown size={16} /><span>Scroll to explore</span></a>
         </section>
 

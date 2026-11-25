@@ -197,3 +197,18 @@ main{position:relative;z-index:1;background:transparent}
 @keyframes orb-drift{0%,100%{translate:0 0}50%{translate:26px -42px}}
 @keyframes orbit-tilt{0%{transform:translate3d(0,0,0) rotate(-18deg)}100%{transform:translate3d(24px,-22px,0) rotate(-3deg)}}
 @keyframes starfield-drift{from{background-position:0 0,0 0,0 0,0 0}to{background-position:180px -90px,-140px 150px,210px 100px,-150px -120px}}
+
+/* A small product-style build card gives the hero a second focal point. */
+.hero-build-note{position:absolute;z-index:2;right:clamp(24px,8vw,116px);bottom:clamp(72px,10vh,116px);width:254px;padding:15px 16px 13px;border:1px solid rgba(255,255,255,.16);border-radius:15px;background:linear-gradient(145deg,rgba(29,24,21,.88),rgba(13,14,14,.78));box-shadow:0 22px 70px rgba(0,0,0,.42),inset 0 1px rgba(255,255,255,.06);backdrop-filter:blur(16px);transform:rotate(-2deg);animation:build-note-float 5.6s ease-in-out infinite}
+.build-note-top,.build-note-main,.build-note-tags,.build-note-signal{display:flex;align-items:center}
+.build-note-top{justify-content:space-between;font:8px var(--mono);letter-spacing:.13em;color:#a69d95}
+.build-note-top>span:first-child{display:flex;align-items:center;gap:7px}.build-note-top i{width:6px;height:6px;border-radius:50%;background:#94d58a;box-shadow:0 0 12px #94d58a99}
+.build-note-main{gap:10px;margin-top:15px;color:#f6f0e9}.build-note-main>span:nth-child(2){display:flex;flex-direction:column;gap:1px;flex:1}.build-note-main strong{font:600 16px var(--display);letter-spacing:-.04em}.build-note-main small{font:10px var(--sans);color:#aaa19a}.build-note-main>svg{color:#ff8c5b}
+.build-note-icon{display:grid;place-items:center;width:34px;height:34px;border:1px solid #ff875055;border-radius:10px;background:linear-gradient(145deg,#fa8752,#9f4226);color:#fff4ec;font:700 16px var(--display);box-shadow:0 6px 18px #ff713522}
+.build-note-tags{gap:6px;margin-top:13px}.build-note-tags span{padding:4px 7px;border:1px solid rgba(255,255,255,.13);border-radius:999px;color:#c3b8af;font:8px var(--mono)}
+.build-note-signal{gap:3px;height:22px;margin-top:11px;padding-top:8px;border-top:1px solid rgba(255,255,255,.1)}.build-note-signal>span{margin-right:auto;color:#8d847d;font:7px var(--mono);letter-spacing:.11em}.build-note-signal i{display:block;width:3px;height:5px;border-radius:2px;background:#f47745;animation:build-signal 1.1s ease-in-out infinite alternate}.build-note-signal i:nth-last-child(2n){height:9px;animation-delay:-.45s}.build-note-signal i:nth-last-child(3n){height:13px;animation-delay:-.8s}
+@keyframes build-note-float{0%,100%{translate:0 0;rotate:-2deg}50%{translate:0 -8px;rotate:-1deg}}
+@keyframes build-signal{from{opacity:.45;scale:1 .6}to{opacity:1;scale:1 1.2}}
+@media(max-width:1000px){.hero-build-note{display:none}}
+@media(max-width:680px){.portfolio-scroll-backdrop::before{background:linear-gradient(90deg,rgba(7,7,7,.96) 0%,rgba(7,7,7,.82) 48%,rgba(7,7,7,.38) 78%,rgba(7,7,7,.2) 100%)}.portfolio-character-wrap{width:120vw;height:70svh;right:-30vw;top:25svh}.portfolio-character{opacity:.76;mask-image:radial-gradient(ellipse 79% 83% at 67% 55%,#000 46%,rgba(0,0,0,.82) 69%,transparent 100%)}.hero{min-height:calc(100svh - 64px);align-items:center;padding-top:66px;padding-bottom:84px}.hero-copy{max-width:560px}.hero h1{font-size:clamp(50px,13vw,78px);line-height:.9}.hero-lede{max-width:390px;color:#d1ccc6;font-size:14px}.hero-footnote{margin-top:48px}.button-dark{box-shadow:0 9px 28px rgba(255,112,43,.19)}}
+@media(prefers-reduced-motion:reduce){.hero-build-note,.build-note-signal i{animation:none!important}}
