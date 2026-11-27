@@ -70,7 +70,7 @@ body{background:#090909;color:#f4f2ee}
 .reveal{opacity:1;transform:none}
 
 /* Scroll-scrubbed portfolio story: the same portrait stays intact while work scenes change with reading progress. */
-.story-section{position:relative;background:#0d0d0d;color:#f4f1ec;padding:clamp(72px,9vw,124px) clamp(24px,8vw,116px) 0;overflow:clip}
+.story-section{position:relative;background:#0d0d0d;color:#f4f1ec;padding:clamp(148px,15vw,190px) clamp(24px,8vw,116px) 0;overflow:clip}
 .story-heading{max-width:1152px;margin:0 auto 54px}.story-heading .section-kicker{margin-bottom:22px}.story-heading h2{font-family:var(--display);font-size:clamp(44px,7vw,84px);line-height:.95;letter-spacing:-.075em;margin:0}.story-heading h2 em{font-style:normal;color:#ff702b}
 .story-layout{max-width:1152px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.72fr);gap:clamp(36px,8vw,110px);align-items:start}
 .story-stage-wrap{height:100%;min-height:100vh}.story-stage{height:min(740px,calc(100svh - 132px));min-height:570px;position:sticky;top:96px;overflow:hidden;isolation:isolate;border:1px solid rgba(255,255,255,.12);border-radius:20px;background:radial-gradient(ellipse at 57% 54%,rgba(255,102,39,.14),transparent 54%),linear-gradient(145deg,#191614,#0d0d0d 70%);box-shadow:0 22px 80px #0008;--scene-tilt:0deg;--scene-shift:0px}
@@ -118,7 +118,7 @@ main{position:relative;z-index:1;background:transparent}
 .story-chapter.is-active{opacity:1;transform:translateY(-5px);border-color:rgba(255,112,43,.64);box-shadow:0 18px 46px rgba(0,0,0,.24)}
 .story-chapter h3{font-size:clamp(22px,2.8vw,34px);color:#f4f1ec}
 .story-chapter p{color:#bcb4ad;font-size:12px}
-@media(max-width:680px){.portfolio-scroll-backdrop::before{background:linear-gradient(90deg,rgba(9,9,9,.87),rgba(9,9,9,.5) 57%,rgba(9,9,9,.22))}.portfolio-character-wrap{width:108vw;height:72svh;right:-23vw;top:17svh}.portfolio-character{opacity:.76;mask-image:radial-gradient(ellipse 82% 84% at 62% 52%,#000 46%,rgba(0,0,0,.9) 70%,transparent 100%)}.ambient-orbit-one{width:50px;left:10%;top:22%}.ambient-orbit-two{width:15px}.ambient-orbit-three{width:76px;height:23px;left:7%;bottom:14%}.hero-portrait{width:min(56vw,220px);justify-self:end}.portrait-stage{height:330px}.hero .portrait-frame{bottom:12%;width:100%}.story-section{padding-top:68px}.story-heading{margin-bottom:28px}.story-chapters{grid-template-columns:1fr;gap:10px}.story-chapter{min-height:210px;padding:20px}.story-chapter h3{font-size:28px}}
+@media(max-width:680px){.portfolio-scroll-backdrop::before{background:linear-gradient(90deg,rgba(9,9,9,.87),rgba(9,9,9,.5) 57%,rgba(9,9,9,.22))}.portfolio-character-wrap{width:108vw;height:72svh;right:-23vw;top:17svh}.portfolio-character{opacity:.76;mask-image:radial-gradient(ellipse 82% 84% at 62% 52%,#000 46%,rgba(0,0,0,.9) 70%,transparent 100%)}.ambient-orbit-one{width:50px;left:10%;top:22%}.ambient-orbit-two{width:15px}.ambient-orbit-three{width:76px;height:23px;left:7%;bottom:14%}.hero-portrait{width:min(56vw,220px);justify-self:end}.portrait-stage{height:330px}.hero .portrait-frame{bottom:12%;width:100%}.story-section{padding-top:112px}.story-heading{margin-bottom:28px}.story-chapters{grid-template-columns:1fr;gap:10px}.story-chapter{min-height:210px;padding:20px}.story-chapter h3{font-size:28px}}
 @media(prefers-reduced-motion:reduce){.portfolio-character-wrap,.ambient-orbit,.portfolio-scroll-backdrop::after{animation:none!important}}
 
 /* Give the scroll-driven character more room to read behind a denser work grid. */
